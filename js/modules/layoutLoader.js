@@ -25,6 +25,9 @@ export function initLayoutLoader() {
     // Sempre busque na raiz ou na pasta 'partials'
     loadHtmlIntoElement('header.html', 'header-placeholder');
     loadHtmlIntoElement('footer.html', 'footer-placeholder');
+
+     loadHtmlIntoElement('modules/header.html', 'header-placeholder');
+    loadHtmlIntoElement('modules/footer.html', 'footer-placeholder');
     // ou, se usar uma pasta:
     // loadHtmlIntoElement('/partials/header.html', 'header-placeholder');
     // loadHtmlIntoElement('/partials/footer.html', 'footer-placeholder');

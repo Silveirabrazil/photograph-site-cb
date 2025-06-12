@@ -26,7 +26,7 @@ export function initLayoutLoader() {
     loadHtmlIntoElement('header.html', 'header-placeholder');
     loadHtmlIntoElement('footer.html', 'footer-placeholder');
 
-     loadHtmlIntoElement('modules/header.html', 'header-placeholder');
+    loadHtmlIntoElement('modules/header.html', 'header-placeholder');
     loadHtmlIntoElement('modules/footer.html', 'footer-placeholder');
     // ou, se usar uma pasta:
     // loadHtmlIntoElement('/partials/header.html', 'header-placeholder');

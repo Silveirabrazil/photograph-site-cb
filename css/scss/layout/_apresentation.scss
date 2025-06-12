@@ -1,33 +1,24 @@
 /* --- 5. Seção de Apresentação --- */
 .apresentation {
-    width: 100; /* Ajustado para ocupar 90% da largura do elemento pai */
+    width: 90%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
     max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
     margin: 2rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
     padding: 2rem; /* Adiciona preenchimento interno para o conteúdo */
-    min-height: 35vw; /* Altura mínima de 30% da altura da viewport */
+    min-height: 35vw; /* Altura mínima de 30% da altura da viewport em desktop */
     background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo da seção */
     display: flex; /* Habilita Flexbox para alinhar itens */
     align-items: center; /* Centraliza os itens filhos (foto e conteúdo) verticalmente */
     gap: 2rem; /* Espaçamento entre a imagem e o conteúdo */
 }
 
-.img-apresentation {
-    max-width: 100%; /* Garante que a imagem nunca ultrapassará seu container pai */
-    height: 100%; /* Mantém a proporção da imagem */
-    display: block; /* Remove espaços extras indesejados abaixo da imagem */
-    flex-shrink: 0; /* Impede que a imagem encolha se não houver espaço suficiente */
-    width: 20vw; /* Define uma largura base para a imagem no desktop */
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
-    border-radius: 2px; /* Adiciona bordas arredondadas à imagem */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave na imagem */
-    
-}
+/* Regra mais específica para a imagem dentro de .apresentation */
 .apresentation img {
-    max-width: 30vw;
+    /* Removida a classe .img-apresentation redundante, o seletor .apresentation img já é suficiente */
+    max-width: 30vw; /* Largura máxima da imagem em relação à viewport em desktop */
     height: auto; /* Mantém a proporção da imagem */
     display: block; /* Remove espaços extras indesejados abaixo da imagem */
     flex-shrink: 0; /* Impede que a imagem encolha se não houver espaço suficiente */
-    width: 60vw; /* Define uma largura base para a imagem no desktop */
+    width: 60vw; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
     object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
     border-radius: 2px; /* Adiciona bordas arredondadas à imagem */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave na imagem */
@@ -40,8 +31,8 @@
     text-align: left; /* Alinha o texto à esquerda por padrão */
     flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
     max-width: 70%; /* Define largura máxima para o bloco de texto para legibilidade */
-    margin-left:8rem ;
-    padding: 3rem;
+    margin-left: 8rem; /* Margem à esquerda para o conteúdo em desktop */
+    padding: 3rem; /* Preenchimento para o conteúdo */
 }
 
 .apresentation .name h2 {
@@ -61,26 +52,29 @@
     width: 100%; /* Ocupa toda a largura disponível do .apresentation-content */
 }
 
-/* Responsividade para telas menores */
+/* --- Responsividade para Telas Menores (Mobile) --- */
 @media (max-width: 768px) {
     .apresentation {
         flex-direction: column; /* Em telas menores, foto fica em cima do texto */
         padding: 1.5rem; /* Ajusta o preenchimento interno em telas menores */
-        width: 95%; /* Ocupa mais largura em telas menores */
-        margin: 1.5rem auto; /* Ajuste da margem em telas menores */
+        width: 100%; /* Ocupa 100% da largura da tela em mobile, garantindo o fundo total */
+        margin: 1.5rem auto; /* Centraliza e ajusta a margem em telas menores */
+        min-height: auto; /* Remove a altura mínima fixa em mobile para se ajustar ao conteúdo */
     }
 
     .apresentation img {
         width: 80%; /* A imagem ocupa 80% da largura do contêiner .apresentation */
         max-width: 250px; /* Limita o tamanho máximo da imagem em telas menores */
+        height: auto; /* Garante que a proporção da imagem é mantida */
         margin-bottom: 1.5rem; /* Adiciona margem abaixo da foto quando em coluna */
-        object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
     }
 
     .apresentation-content {
         max-width: 100%; /* Permite que o conteúdo ocupe toda a largura disponível */
         align-items: center; /* Centraliza o conteúdo (nome e parágrafo) em telas menores */
         text-align: center; /* Centraliza o texto dentro do contêiner em telas menores */
+        margin-left: 0; /* Remove a margem esquerda para centralizar em mobile */
+        padding: 0 1rem; /* Ajusta o padding para mobile */
     }
 
     .apresentation .name h2 {

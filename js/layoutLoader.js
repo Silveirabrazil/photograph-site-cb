@@ -22,10 +22,9 @@ async function loadHtmlIntoElement(url, elementId) {
 }
 
 export function initLayoutLoader() {
-    // Sempre busque na raiz ou na pasta 'partials'
-    loadHtmlIntoElement('/header.html', 'header-placeholder');
-    loadHtmlIntoElement('/footer.html', 'footer-placeholder');
-    // ou, se usar uma pasta:
-    // loadHtmlIntoElement('/partials/header.html', 'header-placeholder');
-    // loadHtmlIntoElement('/partials/footer.html', 'footer-placeholder');
+    // CORREÇÃO APLICADA AQUI: Removido o '/' inicial
+    loadHtmlIntoElement('header.html', 'header-placeholder'); // Sem barra inicial
+    loadHtmlIntoElement('footer.html', 'footer-placeholder'); // Sem barra inicial
+    // Se o modal também for carregado aqui:
+    // loadHtmlIntoElement('modal.html', 'modal-placeholder'); // Exemplo
 }

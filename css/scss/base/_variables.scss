@@ -1,0 +1,40 @@
+// scss/base/_variables.scss
+
+:root {
+    // Fundo da Página (Pode ser transparente ou uma imagem de fundo)
+    // Se você quer "transparente" na página, mas ter uma imagem de fundo real,
+    // o body terá a imagem, e esta variável pode ser deixada como transparente ou não usada diretamente no body.
+    // Ou, se for para o body ser transparente (para ver o que está *por baixo* do navegador),
+    // você pode definir: --bg-body: transparent;
+    // MAS, para o seu propósito, provavelmente você quer que o *fundo do body* seja a sua imagem de fundo,
+    // e os cards fiquem por cima.
+    --bg-body: rgba(255, 255, 255, 0.0); // Exemplo: um branco quase totalmente transparente para o body
+                                      // Ou remova e defina o background do body diretamente no styles.css
+                                      // com uma imagem de fundo.
+
+    // Cores Neutras e de Texto
+    --color-dark: #151513;        // Quase preto
+    --color-medium-grey: #404042; // Um cinza médio SÓLIDO para o fundo do card
+    --color-light-grey: #e4e6e5;  // Um cinza muito claro para texto SÓLIDO
+    --color-white: #ffffff;       // Branco SÓLIDO para fundo de card ou texto
+    --text-color: var(--color-light-grey); // Cor padrão de texto (se o fundo for escuro)
+
+    // Cores de Destaque / Primárias
+    --color-primary: #cf9945;     // Sua cor principal (laranja/marrom) SÓLIDA para títulos
+    --color-secondary: #cf9945;   // Exemplo de uma cor secundária
+    --color-accent: #cf9945;      // Cor de destaque (usada no título do card)
+
+    // Bordas e Sombras
+    --border-radius-large: 8px;
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-dark: 0 6px 30px rgba(0, 0, 0, 0.3);
+    --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5); // Sombra para texto em banners
+
+    // Transições
+    --transition-medium: 0.3s ease;
+
+    // Fontes
+    --font-primary: 'Dosis', sans-serif;
+    --font-secondary: 'Dosis', sans-serif; // Ou outra fonte para títulos/destaques
+}

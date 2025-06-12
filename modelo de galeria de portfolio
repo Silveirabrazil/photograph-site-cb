@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <meta http-equiv="content-language" content="pt-br">
+
+    <meta name="description"
+        content="César Brasil Fotografia - Capturando momentos únicos com paixão e profissionalismo.">
+    <meta name="keywords" content="fotografia, César Brasil, fotos, portfólio, ensaios, eventos">
+    <meta name="author" content="César Brasil Fotografia">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="César Brasil Fotografia">
+    <meta property="og:description" content="Capturando momentos únicos com paixão e profissionalismo.">
+    <meta property="og:image" content="URL_DA_IMAGEM_DO_SITE_OTIMIZADA">
+    <meta property="og:url" content="https://cesarbrasil.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="César Brasil Fotografia">
+    <meta name="twitter:description" content="Capturando momentos únicos com paixão e profissionalismo.">
+    <meta name="twitter:image" content="URL_DA_IMAGEM_DO_SITE_OTIMIZADA">
+
+    <link rel="icon" href="img/icone-camera.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="alternate" hreflang="en" href="https://cesarbrasil.com/en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <title>César Brasil Fotografia</title>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+   <main>
+    <section class="banner">
+            <div class="banner-img" id="bannerPrincipal">
+                <div class="banner-content">
+                    <h1>Fotografia é Poesia</h1>
+                    <h4>Capturando momentos que contam histórias.</h4>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio-category">
+            <h2>Casamentos</h2>
+            <div class="gallery-container">
+                <div class="main-image-display">
+                    <img id="mainWeddingPhoto" src="img/img1.jpg" alt="Foto principal de Casamento" class="active-main-photo">
+                </div>
+
+                <div class="thumbnail-grid" id="weddingThumbnails">
+                    <img src="img/img1.jpg" alt="Miniatura de Casamento 1" class="thumbnail active-thumbnail">
+                    <img src="img/img2.jpg" alt="Miniatura de Casamento 2" class="thumbnail">
+                    <img src="img/img3.jpg" alt="Miniatura de Casamento 3" class="thumbnail">
+                    <img src="img/img4.jpg" alt="Miniatura de Casamento 4" class="thumbnail">
+                    <img src="img/img5.jpg" alt="Miniatura de Casamento 5" class="thumbnail">
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-category">
+            <h2>Retratos</h2>
+            <div class="gallery-container">
+                <div class="main-image-display">
+                    <img id="mainPortraitPhoto" src="img/img6.jpg" alt="Foto principal de Retrato" class="active-main-photo">
+                </div>
+
+                <div class="thumbnail-grid" id="portraitThumbnails">
+                    <img src="img/img6.jpg" alt="Miniatura de Retrato 1" class="thumbnail active-thumbnail">
+                    <img src="img/img7.jpg" alt="Miniatura de Retrato 2" class="thumbnail">
+                    <img src="img/img8.jpg" alt="Miniatura de Retrato 3" class="thumbnail">
+                    <img src="img/img9.jpg" alt="Miniatura de Retrato 4" class="thumbnail">
+                    <img src="img/img10.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img11.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img12.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img13.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img14.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img15.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img16.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img17.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                    <img src="img/img18.jpg" alt="Miniatura de Retrato 5" class="thumbnail">
+                </div>
+            </div>
+        </section>
+
+        </main> 
+
+    <div id="footer-placeholder"></div>
+
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalCaption">
+        <span class="close-button" data-modal-close aria-label="Fechar imagem">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image-display" id="modalImage" src="" alt="Imagem Ampliada">
+            <p id="captionText" class="caption" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script> <link rel="stylesheet" href="css/styles.css">
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sass": "^1.89.1",
+    "swiper": "^11.2.8"
+  }
+}

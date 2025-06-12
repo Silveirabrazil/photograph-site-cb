@@ -1,0 +1,56 @@
+/* --- Banner para Páginas Internas (page-banner-section) --- */
+
+.page-banner-section { /* Contêiner pai da seção do banner de página */
+    width: 100%;
+    height: auto;
+    /* Pode ter estilos base para a SECTION .page-banner-section se precisar */
+}
+
+.page-banner-section__image-container { /* Onde a imagem de fundo será aplicada */
+    width: 100%;
+    max-width: 100%;
+    min-height: 400px; /* Altura padrão para banners de página (ajuste se necessário) */
+    background-size: cover;
+    background-position: top; /* Centraliza a imagem no banner de página */
+    background-repeat: no-repeat;
+    transition: background-image 1.5s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+
+    padding: 2rem 1rem; /* Padding para respiro do conteúdo */
+    padding-top: 80px; /* Espaço para o header fixo */
+}
+
+
+
+
+@media (max-width: 768px) {
+    .page-banner-section__image-container {
+        min-height: 300px; /* Altura menor para mobile */
+        padding: 1.5rem 0.5rem;
+    }
+    .page-banner-section__content {
+        padding: 1rem;
+    }
+    .page-banner-section__content h1 {
+        font-size: 1.8rem;
+    }
+    .page-banner-section__content h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-banner-section__image-container {
+        min-height: 250px;
+    }
+    .page-banner-section__content h1 {
+        font-size: 1.5rem;
+    }
+    .page-banner-section__content h4 {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,87 @@
+/* --- 8. Rodapé (Footer) --- */
+footer {
+    background:#1c1c1c;
+    padding: 2rem 0 1rem;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    text-align: center;
+    z-index: 1070;
+}
+//#1c1c1c #e4e6e5
+.footer-instagram {
+    margin-bottom: 1.5rem;
+}
+
+.footer-instagram a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-instagram a:hover {
+    color: #e4e6e5;
+}
+
+.instagram-photos {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.instagram-photos img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.instagram-photos img:hover {
+    transform: scale(1.1);
+}
+
+.footer-menu ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.footer-menu a {
+    color: #e4e6e5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-menu a:hover {
+    color:#e4e6e5;
+}
+
+.footer-social {
+    margin-bottom: 1.5rem;
+}
+
+.footer-social a {
+    color:#e4e6e5;
+    margin: 0 0.8rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: #e4e6e5;
+}
+
+footer p {
+    color: #e4e6e5; /* Corrigido: Removido o 'var()' desnecessário */
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}

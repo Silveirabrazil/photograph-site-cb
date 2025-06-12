@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <meta http-equiv="content-language" content="pt-br">
+
+    <meta name="description"
+        content="César Brasil Fotografia - Entre em contato conosco para agendar sua sessão de fotos.">
+    <meta name="keywords" content="fotografia, contato, agendamento, orçamento, whatsapp, email">
+    <meta name="author" content="César Brasil Fotografia">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="César Brasil Fotografia - Contato">
+    <meta property="og:description" content="Entre em contato conosco para agendar sua sessão de fotos.">
+    <meta property="og:image" content="URL_DA_IMAGEM_DO_SITE_OTIMIZADA">
+    <meta property="og:url" content="https://cesarbrasil.com/contato.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="César Brasil Fotografia - Contato">
+    <meta name="twitter:description" content="Entre em contato conosco para agendar sua sessão de fotos.">
+    <meta name="twitter:image" content="URL_DA_IMAGEM_DO_SITE_OTIMIZADA">
+
+    <link rel="icon" href="img/icone-camera.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="alternate" hreflang="en" href="https://cesarbrasil.com/en/contact">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Apenas o CSS final compilado! -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>César Brasil Fotografia - Contato</title>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-banner-section contact-banner">
+            <div class="page-banner-section__image-container" id="pageBannerImage"></div>
+            <div class="page-banner-section__content">
+                <h1 class="page-banner-section__title">Capture Seus Momentos - Agende Agora!</h1>
+            </div>
+        </section>
+
+        <section class="contact-methods-section">
+            <h2 class="section-title">Entre em contato</h2>
+            <div class="contact-links-container">
+                <div class="contact-method">
+                    <div class="icon-wrapper whatsapp-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <a href="https://wa.me/5585999093657" target="_blank" class="contact-button whatsapp-button">
+                        Envie uma Mensagem
+                    </a>
+                </div>
+                <div class="contact-method">
+                    <div class="icon-wrapper email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:silveibrazil@gmail.com" class="contact-button email-button">
+                        E-MAIL
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            <h2 class="section-title">Preencha nosso formulário de contato</h2>
+            <div class="form-container">
+                <div class="form-description">
+                    <h3>Crie memórias: agende sua sessão de fotos</h3>
+                    <p>Pronto para capturar seus momentos especiais? Preencha o formulário abaixo para agendar sua sessão de fotos conosco! Por favor, forneça seus detalhes de contato e quaisquer requisitos específicos que você possa ter. Entraremos em contato com você em breve para confirmar sua reserva.</p>
+                </div>
+                <form class="contact-form" action="SEU_SCRIPT_DE_ENVIO_DE_FORMULARIO.php" method="POST">
+                    <div class="form-group">
+                        <label for="nome">NOME *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">TELEFONE *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-MAIL *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_sessao">TIPO DE SESSÃO *</label>
+                        <input type="text" id="tipo_sessao" name="tipo_sessao" placeholder="Ex: Gestante, Família, Casamento">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">MENSAGEM (OPCIONAL)</label>
+                        <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">ENVIAR</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* --- 3. Hero Section (Banner Principal da Home) --- */
+
+.hero-section { /* Contêiner pai do banner */
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* Use esta classe se precisar de espaçamento externo para toda a seção do banner */
+}
+
+.hero-section__image-container { /* Onde a imagem de fundo será aplicada e a altura definida */
+    width: 100%;
+    max-width: 100%;
+    min-height: 30vw;
+    height: 70vh; /* Ajustado para 60vh, pode ser mais adequado que 100vw */
+    /* Você pode adicionar um `max-height: 700px;` aqui se quiser limitar o tamanho em telas muito grandes */
+
+    background-size: cover;
+    background-position: top; /* Mudado de 'top' para 'center' para melhor visualização da imagem */
+    background-repeat: no-repeat;
+    transition: background-image 1.5s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero-section__content { /* Caixa de conteúdo que fica SOBRE a imagem do banner */
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    background-color: rgba(15, 15, 15, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section__content h1 {
+    font-family: var(--font-primary);
+    color: var(--color-light-grey, #f0f0f0);
+    font-size: 2.5rem; /* Aumentado para um tamanho de destaque maior em desktop */
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section__content h4 {
+    font-family: var(--font-primary);
+    color: var(--color-light-grey, #f0f0f0);
+    font-weight: 300;
+    font-size: 1.5rem; /* Aumentado para legibilidade em desktop */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+    .hero-section__image-container {
+        min-height: 50vw;
+        height: auto;
+        padding-bottom: 1rem;
+    }
+
+    .hero-section__content {
+        width: 95%;
+        padding: 1rem 0.5rem;
+    }
+
+    .hero-section__content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-section__content h4 {
+        font-size: 1rem;
+    }
+}

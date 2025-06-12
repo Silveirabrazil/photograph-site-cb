@@ -1,0 +1,9 @@
+// scss/utilities/_animations.scss
+
+// Estilos para animações controladas por JavaScript (ex: ScrollReveal)
+.sr-fade-in,
+.sr-item { /* Classes que você usa para as animações */
+    opacity: 0;
+    visibility: hidden; /* Oculta completamente até a animação */
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out; /* Transição leve para garantir que não haja piscar */
+}

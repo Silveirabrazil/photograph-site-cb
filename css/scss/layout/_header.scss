@@ -1,0 +1,110 @@
+/* --- 2. Navbar (Menu Superior) --- */
+
+header {
+    /* O header será fixo no topo, flutuando sobre o conteúdo */
+    position:absolute ; /* 'fixed' é geralmente preferível para headers que devem permanecer visíveis ao rolar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1060; /* Garante que o header fique acima de tudo */
+
+    /* Aqui definimos o degradê no header */
+    background: linear-gradient(
+        to bottom,                  /* De cima para baixo */
+        rgba(0, 0, 0, 0.9),         /* Começa com preto semi-transparente (ajuste a opacidade aqui) */
+        rgba(0, 0, 0, 0.2)            /* Termina totalmente transparente */
+    );
+    /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
+
+    /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
+    height: 9vw; /* Exemplo: Ajuste esta altura para o seu header */
+    min-height: 80px; /* Garante uma altura mínima para o header */
+
+    box-shadow: var(--shadow-light); /* Sombra no header */
+    transition: background 0.5s ease;
+    display: flex; /* Adicione flexbox para alinhar o navbar dentro do header */
+    align-items: center; /* Centraliza o navbar verticalmente no header */
+    padding: 0 20px; /* Adiciona um padding horizontal para não grudar nas bordas */
+}
+
+.navbar {
+    width: 100%; /* Ocupa a largura total do header */
+    max-width: 1200px; /* Limite de largura para o conteúdo da navbar */
+    margin: 0 auto; /* Centraliza a navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espaça logo e menu */
+}
+
+.logo img {
+    height: 4vw; /* Mantém a altura da logo responsiva */
+    max-height: 80px; /* Define uma altura máxima para a logo */
+    display: block;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
+    padding: 0; /* Remove padding padrão de UL */
+    margin: 0; /* Remove margem padrão de UL */
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--color-light-grey, #e4e6e5); /* Use a variável CSS ou um fallback */
+    font-weight: 500;
+    font-size: 1.2rem; /* Ajustado para melhor legibilidade */
+    transition: color 0.3s ease; /* Transição mais suave para a cor */
+}
+
+.menu a:hover {
+    color: var(--color-primary, #cf9945); /* Use a variável CSS ou um fallback para a cor de hover */
+    font-weight: 800;
+    transition: font-weight 0.5s ease-in-out;
+}
+
+/* Estilos para os itens específicos do menu */
+.menu li { /* Aplique estilos aos LIs diretamente, não às classes separadas se forem apenas para links */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    width: auto; /* Deixa a largura automática */
+    padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600; /* Pode ser definido aqui ou no `a` */
+}
+
+/* Efeitos de hover para os itens do menu (os LIs) */
+.menu li:hover {
+    background-color: rgba(64, 64, 66, 0.2); /* Use RGBA para um efeito transparente */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Media Queries para Responsividade (adaptando o header) */
+@media (max-width: 768px) {
+    header {
+        height: 10vw; /* Altura menor para telas menores */
+        min-height: 60px;
+        padding: 0 10px;
+    }
+
+    .logo img {
+        height: 6vw;
+        max-height: 60px;
+    }
+
+    .menu {
+        gap: 1rem;
+    }
+
+    .menu a {
+        font-size: 1rem;
+    }
+
+    .menu li {
+        padding: 0.3rem 0.8rem;
+    }
+}

@@ -1,0 +1,134 @@
+/* _gallery-cards.scss (ou o nome do seu arquivo modular) */
+
+/* --- Seção da Galeria de Portfólio (Aplicável a todas as galerias com estas classes) --- */
+
+.portfolio-gallery-wrapper {
+    padding: 3rem 1.5rem;
+    background-color: transparent;
+    color: var(--color-light-grey); /* Mantido: cor do texto do wrapper, se aplicável */
+}
+
+.portfolio-category {
+    display: grid;
+    /* Configura o layout em grid com colunas responsivas */
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: 2rem; /* Espaçamento entre os cards */
+    max-width: 1200px; /* Largura máxima da grade */
+    margin: 0 auto; /* Centraliza a grade na página */
+    justify-content: center; /* Mantido para centralizar se houver poucos cards */
+}
+
+.portfolio-card {
+    /* Propriedades base do card */
+    border-radius: 8px; /* Cantos arredondados */
+    overflow: hidden; /* Garante que o conteúdo não vaze dos cantos arredondados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
+    text-decoration: none; /* Remove sublinhado se o card for um link */
+    color: black; /* Cor padrão do texto (agora para elementos não sobrepostos/específicos) */
+    position: relative; /* ESSENCIAL para posicionamento absoluto dos filhos (h3.card-title) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
+
+    background-color: transparent; /* Remove o fundo do card, deixando a imagem dominar */
+    display: block; /* Garante que o .portfolio-card se comporte como um bloco para o position: relative */
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px); /* Efeito de "subir" no hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Sombra mais intensa no hover */
+}
+
+/* Overlay de escurecimento sobre a imagem no hover (mantido) */
+.portfolio-card::before {
+    content: ''; /* Essencial para pseudo-elementos */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Começa totalmente transparente */
+    transition: background-color 0.3s ease; /* Transição suave da cor */
+    z-index: 1; /* Garante que o overlay fique acima da imagem */
+    pointer-events: none; /* Permite que o mouse interaja com o card por baixo do overlay */
+}
+
+.portfolio-card:hover::before {
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece para 40% de opacidade no hover */
+}
+
+/* Estilo do wrapper da imagem para manter a proporção (mantido) */
+.card-image-wrapper {
+    width: 100%;
+    padding-bottom: 75%; /* Exemplo: mantém proporção 4:3 (altura é 75% da largura) */
+    position: relative;
+    overflow: hidden; /* Esconde partes da imagem que excedam o wrapper */
+}
+
+.card-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    transition: transform 0.3s ease; /* Transição para o zoom da imagem */
+    object-position: top; /* Ajusta o foco da imagem, se necessário */
+}
+
+.portfolio-card:hover .card-image-wrapper img {
+    transform: scale(1.05); /* Pequeno zoom na imagem no hover */
+}
+
+/* REMOVIDO: .feature-item-body não existe no seu HTML para esses cards */
+/* AJUSTES: Aplica o estilo de sobreposição e fundo escuro diretamente ao h3.card-title */
+.card-title {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    color: white; /* Cor branca para contraste sobre a faixa escura */
+    margin: 0; /* Remove margens padrão */
+    text-align: center; /* Centraliza o texto */
+
+    /* Posicionamento absoluto do título sobre a imagem */
+    position: absolute;
+    bottom: 0; /* Alinha na parte inferior do card */
+    left: 0;
+    width: 100%; /* Ocupa toda a largura do card */
+    background-color: rgba(0, 0, 0, 0.0); /* Faixa escura semi-transparente para o título */
+    padding: 0.5rem 1rem; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    z-index: 2; /* Garante que fique acima da imagem e do overlay de hover */
+    transition: background-color 0.3s ease; /* Transição suave para o fundo */
+}
+
+/* REMOVIDO: .feature-description, .feature-meta, .feature-item-footer não existem no seu HTML para esses cards */
+/* Se esses elementos existirem em outros HTMLs e você quiser escondê-los,
+   precisaria de seletores mais específicos ou mantê-los no CSS de `_feature-links.scss` (se for o caso)
+   No contexto do seu HTML fornecido aqui, eles não são relevantes.
+*/
+
+/* --- Media Queries para responsividade dos cards (mantido) --- */
+
+@media (max-width: 768px) {
+    .portfolio-gallery-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .portfolio-category {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-category {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,49 @@
+/* --- 7. Posts Recentes/Blog --- */
+.recent-posts {
+    max-width: 1100px;
+    margin: 2rem auto 3rem;
+    padding: 0 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post {
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    width: 300px;
+    flex: 1 1 300px;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.post img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.post-info {
+    padding: 1rem;
+}
+
+.post-info .date {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.post-info h2 {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    margin-top: 0;
+    line-height: 1.3;
+}

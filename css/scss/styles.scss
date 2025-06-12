@@ -1,0 +1,48 @@
+// scss/styles.scss
+
+// 1. ABSTRACTS
+// (Variáveis, Mixins, Funções - Não geram CSS por si só, mas são usadas nos outros arquivos)
+@import 'base/variables'; // Suas variáveis globais
+// @import 'abstracts/mixins'; // Adicione se você tiver um arquivo _mixins.scss
+
+// 2. BASE
+// (Estilos globais, resets, tipografia base para tags HTML)
+@import 'base/globals';     // Seus estilos globais
+// @import 'base/typography'; // Adicione se você tiver um arquivo de tipografia separado
+
+// 3. LAYOUT
+// (Estilos para a estrutura principal da página: header, footer, containers, seções de layout)
+@import 'layout/header';    // Seu cabeçalho
+@import 'layout/footer';    // Seu rodapé
+@import 'layout/apresentation'; // Sua seção de apresentação
+@import 'layout/feature-links'; // Sua seção de links de recursos
+@import 'layout/recent-posts'; // Sua seção de posts recentes
+@import 'layout/media-queries';
+//Seu arquivo de media queries gerais, mantido aqui por enquanto.
+
+
+// 4. COMPONENTS
+// (Módulos de UI reutilizáveis: botões, cards, carrosséis genéricos, modais, o banner PADRÃO)
+@import 'components/bannerHome';   // <--- O banner padrão (para index.html)
+@import 'components/carousel'; // Seu carrossel principal
+@import 'components/modal';  
+@import 'components/bannerPages';
+@import 'components/gallery-cards';
+@import 'components/contact-page.scss'; 
+@import 'components/testimonials.scss';
+@import 'components/_wedding-gallery.scss';
+// 5. PAGES
+// (Estilos específicos para páginas únicas, que sobrescrevem componentes ou layouts para uma página específica)
+                                // Este arquivo contém os estilos de .banner.banner-gallery para a página de casamentos.
+
+
+// 6. UTILITIES
+// (Classes utilitárias de uso único ou helper classes que podem ser aplicadas a qualquer elemento)
+@import 'utilities/animations'; // <--- Mova este arquivo para 'scss/utilities/_animations.scss'
+                                // Contém classes como .sr-fade-in para animações de scroll.
+
+                                // Conforme sua árvore, ele está em 'layout'. Se for geral, pode ficar aqui.
+
+
+// 7. VENDORS (Opcional)
+// @import 'vendors/swiper'; // Exemplo para bibliotecas de terceiros como Swiper

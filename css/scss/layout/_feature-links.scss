@@ -1,0 +1,165 @@
+/* _feature-links.scss */
+
+/* --- Seção de Links de Destaque --- */
+
+.feature-links {
+    padding: 3rem 1.5rem; // Espaçamento interno da seção
+    background-color: var(--color-light-background, #f8f8f8); // Cor de fundo suave para a seção
+    display: grid; // Usar grid para organizar os feature-items
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // 3 colunas responsivas por padrão
+    gap: 2rem; // Espaçamento entre os itens
+    max-width: 1200px; // Largura máxima da seção
+    margin: 0 auto; // Centraliza a seção
+}
+
+.feature-item {
+    background-color: var(--color-white, #fff); // Fundo branco para cada item
+    border-radius: 8px; // Cantos arredondados
+    overflow: hidden; // Garante que o conteúdo não vaze dos cantos
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Sombra sutil para profundidade
+    text-decoration: none; // Remove sublinhado se o item for um link
+    color: var(--color-dark-grey, #333); // Cor padrão do texto
+    display: flex; // Flexbox para empilhar header, body e footer
+    flex-direction: column; // Conteúdo empilhado verticalmente
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Transição suave para hover
+}
+
+.feature-item:hover {
+    transform: translateY(-5px); // Efeito de "subir" no hover
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); // Sombra mais intensa no hover
+}
+
+.feature-item-header {
+    width: 100%;
+    padding-bottom: 75%; // Proporção 4:3 para a imagem (ajuste conforme necessário)
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-item-header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Garante que a imagem cubra o espaço sem distorcer
+    transition: transform 0.3s ease; // Transição para o zoom da imagem
+    object-position: center; // Centraliza o foco da imagem
+}
+
+.feature-item:hover .feature-item-header img {
+    transform: scale(1.05); // Pequeno zoom na imagem no hover
+}
+
+.feature-item-body {
+    padding: 1.5rem; // Espaçamento interno para o corpo do item
+    flex-grow: 1; // Permite que o corpo ocupe o espaço restante
+    display: flex; // Flexbox para organizar o título, descrição e meta
+    flex-direction: column;
+    align-items: center; // Centraliza horizontalmente o conteúdo do body
+    text-align: center; // Centraliza o texto
+}
+
+.feature-title {
+    font-family: var(--font-secondary); // Usa sua fonte secundária
+    font-size: 1.75rem; // Tamanho do título
+    color: #cf9945; // Cor de destaque para o título
+    margin-top: 0; // Remove margem superior padrão
+    margin-bottom: 0.75rem; // Espaço abaixo do título
+}
+
+.feature-description {
+    font-family: var(--font-primary); // Usa sua fonte primária
+    font-size: 1rem; // Tamanho da descrição
+    color: var(--color-dark-grey, #555); // Cor do texto da descrição
+    line-height: 1.6; // Espaçamento entre linhas
+    margin-bottom: 1rem; // Espaço abaixo da descrição
+
+    /* --- NOVAS PROPRIEDADES PARA LIMITAR O TEXTO --- */
+    overflow: hidden; // Esconde o conteúdo que excede o container
+    text-overflow: ellipsis; // Adiciona "..." ao texto cortado
+    display: -webkit-box; // Necessário para -webkit-line-clamp funcionar
+    -webkit-line-clamp: 3; // Limita o texto a 3 linhas (ajuste este valor!)
+    -webkit-box-orient: vertical; // Orientação da caixa flexível
+    white-space: normal; // Garante que o texto quebre linhas normalmente
+}
+
+.feature-meta {
+    display: flex; // Organiza os parágrafos de meta em linha
+    flex-wrap: wrap; // Permite quebrar linha se não houver espaço
+    justify-content: center; // Centraliza os itens meta
+    gap: 0.75rem; // Espaçamento entre os itens meta
+    font-size: 0.9rem; // Tamanho da fonte para meta
+    color: var(--color-medium-grey, #777); // Cor para meta informações
+    margin-top: auto; // Empurra a meta para o final do corpo do item, se houver espaço
+    margin-bottom: 1.5rem; // Espaço abaixo da meta
+}
+
+.feature-meta p {
+    margin: 0; // Remove margens padrão dos parágrafos
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.feature-meta i {
+    color: #cf9945; // Cor para os ícones
+}
+
+.feature-item-footer {
+    padding: 1rem 1.5rem; // Espaçamento interno para o rodapé
+    border-top: 1px solid var(--color-border, #eee); // Linha divisória no topo do rodapé
+    text-align: center; // Centraliza o link
+    margin-top: auto; // Garante que o footer fique no final do item, mesmo com alturas variáveis
+}
+
+.feature-item-footer a {
+    color: #cf9945; // Cor do link
+    text-decoration: none; // Remove sublinhado
+    font-weight: bold; // Negrito
+    font-size: 1rem;
+    transition: color 0.3s ease; // Transição suave para hover
+}
+
+.feature-item-footer a:hover {
+    color: var(--color-dark-accent, #0056b3); // Cor mais escura no hover
+    text-decoration: underline; // Adiciona sublinhado no hover
+}
+
+/* --- Media Queries para Responsividade --- */
+
+@media (max-width: 992px) {
+    .feature-links {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // 2 ou 3 colunas em telas médias
+        gap: 1.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-links {
+        grid-template-columns: 1fr; // Uma coluna em telas menores
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .feature-item-body {
+        padding: 1rem;
+    }
+
+    .feature-title {
+        font-size: 1.4rem;
+    }
+
+    .feature-description {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 4; // Ajuste para mais linhas em telas menores se preferir
+    }
+
+    .feature-meta {
+        font-size: 0.85rem;
+    }
+}

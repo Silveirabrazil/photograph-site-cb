@@ -1,0 +1,71 @@
+// scss/base/_globals.scss (CORRIGIDO)
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Dosis sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: Dosis sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Dosis sans-serif;
+    line-height: 1.6;
+    color: var(--text-color); /* Usando sua nova variável */
+    background-color: var(--bg-body); /* Usando sua nova variável */
+    /* overflow-x: hidden; // Já definido acima para html, body */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+main {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: var(--max-width);
+    flex-grow: 1;
+}
+
+footer {
+    background: var(--color-primary); /* Ajustado para usar sua variável */
+    padding: 2rem 0 1rem;
+    margin-top: 3rem;
+    box-shadow: var(--shadow-light); /* Ajustado para usar sua variável */
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    color: var(--color-white); /* Ajustado para usar sua variável */
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}

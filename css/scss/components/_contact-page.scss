@@ -1,0 +1,310 @@
+/* css/scss/components/_contact-page.scss */
+
+// Definir cores como variáveis Sass para uso com funções Sass
+// e também definir como variáveis CSS para uso geral (acessíveis via JS ou para temas)
+:root {
+    // Estas são sugestões baseadas na imagem de referência.
+    // Use as suas variáveis de cor globais se já as tiver em _globals.scss ou similar.
+    --color-accent: #cf9945; // Rosa/Pink de destaque da seção de formulário
+    --color-whatsapp: #25D366; // Verde WhatsApp
+    --color-email: #4285F4; // Azul Email (padrão Google/Material Blue)
+    --color-dark-grey: #333333; // Para texto principal
+    --color-light-grey-background: #F8F8F8; // Para seções de fundo claro
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    // Se você tem variáveis para suas fontes, use-as aqui. Ex:
+    // --font-primary: 'Dosis', sans-serif;
+    // --font-secondary: 'Dosis', sans-serif; // Assumindo Dosis para títulos também
+}
+
+// Definições de cores como variáveis Sass (para uso com funções Sass como darken())
+// Certifique-se de que estas cores sólidas correspondem às definidas acima nas variáveis CSS
+$whatsapp-color-sass: #25D366;
+$email-color-sass: #4285F4;
+$accent-color-sass:#cf9945;
+
+/* Estilo do Banner da Página de Contato */
+.page-banner-section.contact-banner {
+    background-color: var(--color-dark-grey); /* Fundo escuro para o banner */
+    color: var(--color-white); /* Texto branco */
+    text-align: center;
+    padding: 4rem 1.5rem;
+    position: relative;
+    overflow: hidden; /* Para garantir que a imagem não vaze */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; // Altura mínima para o banner
+
+    .page-banner-section__image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // ATENÇÃO: Adicione sua imagem de banner aqui se quiser uma.
+        // Exemplo: background-image: url('../img/seu-banner-contato.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.4; /* Escurece a imagem para o texto ser legível */
+        z-index: 0;
+    }
+
+    .page-banner-section__content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .page-banner-section__title {
+        font-family: var(--font-secondary); // Use a fonte que você já usa para títulos
+        font-size: 2.5rem;
+        margin-top: 10rem;
+        color: var(--color-white);
+    }
+
+    .page-banner-section__subtitle {
+        font-family: var(--font-primary); // Use sua fonte primária para texto
+        font-size: 1.2rem;
+        color: var(--color-white);
+        margin-bottom: 10rem;
+    }
+}
+
+
+/* Estilo para Títulos de Seção (como "Entre em contato", "Preencha nosso formulário") */
+.section-title {
+    font-family: var(--font-secondary); // Assumindo 'Dosis' ou sua fonte de título
+    font-size: 2rem;
+    color: var(--color-dark-grey);
+    text-align: center;
+    margin: 3rem 0 2rem;
+}
+
+/* Seção de Métodos de Contato (WhatsApp e Email) */
+.contact-methods-section {
+    padding: 3rem 1.5rem;
+    background-color: var(--color-white); // Fundo branco
+    text-align: center;
+
+    .contact-links-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem; // Espaçamento entre os cartões de contato
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-method {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--color-light-grey-background); // Fundo do cartão
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        flex: 1 1 280px; /* Flexível, com base de 280px */
+        max-width: 350px;
+    }
+
+    .contact-method:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-wrapper {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-white);
+    }
+
+    .whatsapp-icon {
+        background-color: var(--color-whatsapp); // Verde WhatsApp
+    }
+
+    .email-icon {
+        background-color: var(--color-email); // Azul Email
+    }
+
+    .contact-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        width: 100%; /* Ocupa toda a largura do método de contato */
+        text-align: center;
+    }
+
+    .whatsapp-button {
+        background-color: var(--color-whatsapp);
+        color: var(--color-white);
+    }
+
+    .whatsapp-button:hover {
+        background-color: darken($whatsapp-color-sass, 10%); // Usando a variável Sass
+    }
+
+    .email-button {
+        background-color: var(--color-email);
+        color: var(--color-white);
+    }
+
+    .email-button:hover {
+        background-color: darken($email-color-sass, 10%); // Usando a variável Sass
+    }
+}
+
+
+/* Seção do Formulário de Contato */
+.contact-form-section {
+    padding: 3rem 1.5rem;
+    background-color: var(--color-accent); // Fundo rosa/pink para o formulário
+    color: var(--color-white); // Texto branco no formulário
+
+    .form-container {
+        display: flex;
+        flex-wrap: wrap; // Permite quebrar em telas menores
+        max-width: 1000px;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-description {
+        flex: 1 1 40%; // Ocupa cerca de 40% da largura
+        padding: 2.5rem;
+        background-color: var(--color-accent); // Garante que a descrição tenha a cor de destaque
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-white);
+        }
+        p {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-white);
+        }
+    }
+
+    .contact-form {
+        flex: 1 1 60%; // Ocupa cerca de 60% da largura
+        padding: 2.5rem;
+        background-color: var(--color-white); // Fundo branco para os campos do formulário
+        color: var(--color-dark-grey); // Texto dos campos em cinza escuro
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            label {
+                display: block;
+                font-family: var(--font-primary);
+                font-size: 0.9rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            textarea {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-family: var(--font-primary);
+                font-size: 1rem;
+                box-sizing: border-box; /* Inclui padding na largura */
+            }
+            textarea {
+                resize: vertical; /* Permite redimensionar verticalmente */
+            }
+        }
+
+        .submit-button {
+            background-color: var(--color-accent); // Cor de destaque para o botão
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background-color: #cf9945; // Usando a variável Sass
+        }
+    }
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .contact-methods-section {
+        .contact-links-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-method {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    .contact-form-section {
+        .form-container {
+            flex-direction: column;
+        }
+        .form-description,
+        .contact-form {
+            flex: 1 1 100%;
+            padding: 2rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .page-banner-section.contact-banner {
+        padding: 3rem 1rem;
+        .page-banner-section__title {
+            font-size: 1.8rem;
+        }
+        .page-banner-section__subtitle {
+            font-size: 1rem;
+        }
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin: 2rem 0 1.5rem;
+    }
+
+    .contact-form-section {
+        .form-description {
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+        .submit-button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+}

@@ -23,8 +23,8 @@ async function loadHtmlIntoElement(url, elementId) {
 
 export function initLayoutLoader() {
     // CORREÇÃO APLICADA AQUI: Removido o '/' inicial
-    loadHtmlIntoElement('header.html', 'header-placeholder'); // Sem barra inicial
-    loadHtmlIntoElement('footer.html', 'footer-placeholder'); // Sem barra inicial
+    loadHtmlIntoElement('modules/header.html', 'header-placeholder'); // Sem barra inicial
+    loadHtmlIntoElement('modules/footer.html', 'footer-placeholder'); // Sem barra inicial
     // Se o modal também for carregado aqui:
     // loadHtmlIntoElement('modal.html', 'modal-placeholder'); // Exemplo
 }

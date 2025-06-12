@@ -1,6 +1,6 @@
 /**
  * Carrega conteúdo HTML de um arquivo e o insere em um elemento específico.
- * @param {string} url O caminho para o arquivo HTML (ex: 'modules/header.html').
+ * @param {string} url O caminho para o arquivo HTML (ex: 'partials/header.html').
  * @param {string} elementId O ID do elemento onde o conteúdo será inserido (ex: 'header-placeholder').
  */
 async function loadHtmlIntoElement(url, elementId) {
@@ -22,9 +22,10 @@ async function loadHtmlIntoElement(url, elementId) {
 }
 
 export function initLayoutLoader() {
-    // ESTA É A VERSÃO CORRETA PARA A PASTA 'modules'
-    loadHtmlIntoElement('modules/header.html', 'header-placeholder'); 
-    loadHtmlIntoElement('modules/footer.html', 'footer-placeholder'); 
-    // Se o modal também estiver na pasta 'modules' e for carregado por aqui:
-    // loadHtmlIntoElement('modules/modal.html', 'modal-placeholder'); // Exemplo
+    // Sempre busque na raiz ou na pasta 'partials'
+    loadHtmlIntoElement('/header.html', 'header-placeholder');
+    loadHtmlIntoElement('/footer.html', 'footer-placeholder');
+    // ou, se usar uma pasta:
+    // loadHtmlIntoElement('/partials/header.html', 'header-placeholder');
+    // loadHtmlIntoElement('/partials/footer.html', 'footer-placeholder');
 }

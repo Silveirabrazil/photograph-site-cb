@@ -1,7 +1,7 @@
-/* Seu CSS Existente */
+/* Seu CSS Existente - MODIFICADO para alinhar com HTML e JS */
 
-/* Estilos para o Modal de Imagem */
-.modal {
+/* Estilos para o Modal de Imagem da Galeria */
+#galleryModal { /* ID usado no HTML e JS */
     display: none; /* Escondido por padrão */
     position: fixed; /* Fixo na tela */
     z-index: 2000; /* Acima de todo o resto */
@@ -15,15 +15,16 @@
     align-items: center; /* Centraliza o conteúdo verticalmente */
     opacity: 0; /* Começa transparente */
     transition: opacity 0.3s ease-in-out; /* Transição para opacidade */
+    pointer-events: none; /* Permite cliques através dele quando invisível */
 }
 
-.modal.is-open {
+#galleryModal.is-open { /* Classe .is-open usada no JS */
     display: flex; /* Mostra o modal como flexbox quando ativo */
-
     opacity: 1; /* Torna-o opaco */
+    pointer-events: auto; /* Habilita interações quando visível */
 }
 
-.modal-content {
+.modal-content-gallery { /* Classe usada no HTML */
     margin: auto;
     display: block;
     max-width: 90%; /* Largura máxima do conteúdo */
@@ -31,17 +32,18 @@
     position: relative; /* Para posicionar a legenda */
 }
 
-.modal-image-display {
-    width: 80vw;
-    max-height: 50vw;
+#galleryModalImage { /* ID usado no HTML e JS para a imagem principal */
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh; /* Ajustado para deixar espaço para a legenda e botões */
     height: auto;
     display: block; /* Remove espaço extra abaixo da imagem */
     object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
-    margin: auto;
+    margin: 0 auto; /* Centraliza a imagem */
 }
 
-.caption {
-    margin-top: 0px;
+.caption-text-gallery { /* Classe usada no HTML e ID #galleryModalCaption usado no JS */
+    margin-top: 10px; /* Espaço para a legenda */
     text-align: center;
     color: #ccc; /* Cor da legenda */
     font-size: 1.2rem;
@@ -49,7 +51,7 @@
     font-family: var(--font-primary, sans-serif); /* Usar a fonte do seu projeto */
 }
 
-.close-button {
+.close-button-gallery { /* Classe usada no HTML e JS */
     position: absolute;
     top: 20px;
     right: 35px;
@@ -61,30 +63,82 @@
     z-index: 2001; /* Garante que o botão fique acima da imagem e do fundo */
 }
 
-.close-button:hover,
-.close-button:focus {
+.close-button-gallery:hover,
+.close-button-gallery:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
 
+.prev-button-gallery,
+.next-button-gallery { /* Classes usadas no HTML e JS */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo dos botões de navegação */
+    border-radius: 0; /* Removido border-radius específico para que o Next possa ter o seu */
+}
+
+.next-button-gallery {
+    right: 0;
+    border-radius: 3px 0 0 3px; /* Cantos arredondados à direita */
+}
+
+.prev-button-gallery {
+    left: 0;
+    border-radius: 0 3px 3px 0; /* Cantos arredondados à esquerda */
+}
+
+.prev-button-gallery:hover,
+.next-button-gallery:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
 /* Responsividade para o modal */
 @media (max-width: 768px) {
-    .close-button {
+    .close-button-gallery {
         top: 15px;
         right: 25px;
         font-size: 30px;
     }
 
-    .caption {
+    .caption-text-gallery {
         font-size: 1rem;
+    }
+
+    .prev-button-gallery,
+    .next-button-gallery {
+        font-size: 16px;
+        padding: 12px;
+        margin-top: 0; /* Removido, já é centralizado por transform */
+    }
+
+    #galleryModalImage {
+        max-width: 95%; /* Ajusta a largura da imagem para mobile */
+        max-height: 80vh; /* Ajusta a altura máxima para mobile */
     }
 }
 
 @media (max-width: 480px) {
-    .close-button {
+    .close-button-gallery {
         top: 10px;
         right: 15px;
         font-size: 25px;
+    }
+
+    .prev-button-gallery,
+    .next-button-gallery {
+        font-size: 14px;
+        padding: 10px;
     }
 }

@@ -3,7 +3,7 @@
     width: 100%; /* Garante que a seção ocupe 100% da largura disponível */
     max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
     margin: 4rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
-    padding: 4rem; /* Adiciona preenchimento interno para o conteúdo */
+    
     min-height: 35vw; /* Altura mínima de 30% da altura da viewport em desktop */
     background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo da seção */
     display: flex; /* Habilita Flexbox para alinhar itens */
@@ -58,15 +58,16 @@
 @media (max-width: 768px) {
     .apresentation {
         flex-direction: column; /* Em telas menores, foto fica em cima do texto */
-        padding: 1.5rem; /* Ajusta o preenchimento interno em telas menores */
+        padding: auto; /* Ajusta o preenchimento interno em telas menores */
         width: 100%; /* Continua ocupando 100% da largura da tela */
         min-height: auto; /* Remove a altura mínima fixa em mobile para se ajustar ao conteúdo */
-        margin: 2rem auto; /* Ajusta margem para mobile */
+        margin: auto; /* Ajusta margem para mobile */
         gap: 1.5rem; /* Ajusta espaçamento entre imagem e texto */
+        padding-bottom: 2rem;
     }
 
     .apresentation img {
-        width: 70%; /* A imagem ocupa 70% da largura do contêiner .apresentation */
+       
         max-width: 280px; /* Limita o tamanho máximo da imagem em telas menores (ajuste conforme necessário) */
         height: auto; /* Garante que a proporção da imagem é mantida */
         margin-bottom: 0; /* Remove margem abaixo da foto pois o gap já a controla */
@@ -77,7 +78,7 @@
         align-items: center; /* Centraliza o conteúdo (nome e parágrafo) em telas menores */
         text-align: center; /* Centraliza o texto dentro do contêiner em telas menores */
         margin-left: 0; /* Remove a margem esquerda para centralizar em mobile */
-        padding: 0 1rem; /* Ajusta o padding para mobile */
+        padding: 0 ; /* Ajusta o padding para mobile */
     }
 
     /* As fontes agora são controladas pelo clamp em suas regras gerais,
@@ -100,5 +101,6 @@
 
     .apresentation p {
         font-size: 1.5rem; /* Fixa o tamanho máximo para p em telas muito grandes */
+        padding-bottom: 2rem;
     }
 }

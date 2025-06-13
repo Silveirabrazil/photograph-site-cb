@@ -1,22 +1,28 @@
-// scss/base/_globals.scss (CORRIGIDO - SOMENTE DOSIS)
+// scss/base/_globals.scss
 
-// Importa a fonte Dosis do Google Fonts.
-// Esta linha deve estar no TOPO do seu arquivo SCSS ou CSS principal,
-// antes de qualquer outra regra de estilo.
+// 1. Importa a fonte Dosis do Google Fonts.
+// Esta linha DEVE estar no TOPO do seu arquivo SCSS principal.
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 
-/* Regras para variáveis globais */
-:root {
-    --font-primary: 'Dosis', sans-serif; // Dosis é agora a única fonte primária
-    // Removida --font-secondary (Raleway)
-    --text-color: #333; // Exemplo de cor de texto padrão
-    --bg-body: #f4f4f4; // Exemplo de cor de fundo do corpo
-    --color-primary: #007bff; // Exemplo de cor primária
-    --color-white: #fff; // Exemplo de cor branca
-    --shadow-light: 0 2px 5px rgba(0,0,0,0.1); // Exemplo de sombra
-    --max-width: 1200px; // Exemplo de largura máxima para o conteúdo
-}
+// 2. Definições de variáveis SCSS.
+// Estas são variáveis Sass que só existem durante a compilação do Sass.
+$color-primary-scss: #007bff; // Sua cor primária definida em Sass.
 
+// 3. Regras para variáveis CSS globais (:root).
+// Estas são variáveis CSS nativas que podem ser usadas em tempo de execução no navegador.
+// Usamos a interpolação #{} para passar o valor da variável SCSS para a variável CSS.
+:root {
+    --font-primary: 'Dosis', sans-serif; // Dosis como fonte primária
+    --text-color: #333; // Cor de texto padrão
+    --bg-body: #f4f4f4; // Cor de fundo do corpo
+    --color-primary: #{$color-primary-scss}; // Usa a variável SCSS para definir a variável CSS
+    --color-white: #fff; // Cor branca
+    --shadow-light: 0 2px 5px rgba(0,0,0,0.1); // Sombra padrão
+    --max-width: 100%; // Largura máxima para o conteúdo
+    
+    // Variáveis que você pode precisar para o hover do botão (pré-calculadas em Sass)
+    --color-primary-darkened: #{darken($color-primary-scss, 10%)}; 
+}
 
 /* Reset básico e box-sizing */
 * {
@@ -46,7 +52,7 @@ html, body {
 }
 
 body {
-    font-family: var(--font-primary); /* **Aqui aplicamos a fonte Dosis globalmente** */
+    font-family: var(--font-primary); /* Aqui aplicamos a fonte Dosis globalmente */
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-body);
@@ -55,7 +61,7 @@ body {
 /* Estilos de elementos comuns */
 a {
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-primary); // Usa a variável CSS
 }
 
 img {
@@ -75,16 +81,16 @@ main {
 }
 
 footer {
-    background: var(--color-primary);
+    background: var(--color-primary); // Usa a variável CSS
     padding: 2rem 0 1rem;
     margin-top: 3rem;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-light); // Usa a variável CSS
     text-align: center;
     width: 100%;
 }
 
 footer p {
-    color: var(--color-white);
+    color: var(--color-white); // Usa a variável CSS
     font-size: 0.9rem;
     margin-top: 1.5rem;
 }

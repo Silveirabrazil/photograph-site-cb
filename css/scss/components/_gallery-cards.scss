@@ -117,7 +117,7 @@
 
 /* Estilos para o Título Principal (Ex: CASAMENTO - JANA + MATT) */
 .card-title {
-    font-family: var(--font-secondary); // Use a fonte que desejar para o título principal
+    font-family: var(--font-primary); // Use a fonte que desejar para o título principal (usando Dosis)
     font-size: 1.5rem;
     color: white;
     margin: auto 0; // Centraliza verticalmente entre a localização e o botão
@@ -129,7 +129,7 @@
 
 /* Estilos para o botão "VER FOTOS" */
 .card-view-photos {
-    font-family: var(--font-primary); // Ou a fonte que você preferir
+    font-family: var(--font-primary); // Usa a fonte Dosis
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -143,7 +143,10 @@
 }
 
 .portfolio-card:hover .card-view-photos {
-    background-color: darken(var(--color-primary), 10%); // Escurece o botão no hover (SCSS function)
+    // Para que isso funcione, a variável SCSS `$color-primary-scss` precisa ser acessível.
+    // Isso geralmente é feito através de um `@import` do seu arquivo de variáveis (se tiver um)
+    // ou se este arquivo for compilado depois de um arquivo global que define a variável.
+    background-color: darken($color-primary-scss, 10%);
 }
 
 

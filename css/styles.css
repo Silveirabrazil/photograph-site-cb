@@ -63,6 +63,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-body);
+  padding-top: 0;
 }
 
 /* Estilos de elementos comuns */

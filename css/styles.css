@@ -1798,7 +1798,7 @@ footer p {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 2px; /* Bordas arredondadas para os itens da galeria */
+  border-radius: 1px; /* Bordas arredondadas para os itens da galeria */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
   display: block;
@@ -1858,7 +1858,7 @@ footer p {
   max-height: 50vw;
   height: auto;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Sombra para o modal */
-  border-radius: 3px; /* Cantos arredondados */
+  border-radius: 1px; /* Cantos arredondados */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1869,7 +1869,7 @@ footer p {
   max-width: 100%;
   max-height: calc(100% - 60px);
   display: block;
-  border-radius: 8px 8px 0 0;
+  border-radius: 1px 1px 0 0;
 }
 
 .caption-text-wedding {
@@ -1880,7 +1880,7 @@ footer p {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 1px 1px;
 }
 
 /* Botão de Fechar o Modal */
@@ -1916,7 +1916,7 @@ footer p {
   font-weight: bold;
   font-size: 30px;
   transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 1px 1px 0;
   user-select: none;
   -webkit-user-select: none;
   opacity: 0.6; /* Levemente transparente */
@@ -1930,12 +1930,12 @@ footer p {
 
 .prev-button-wedding {
   left: 0;
-  border-radius: 3px 0 0 3px;
+  border-radius: 1px 0 0 1px;
 }
 
 .next-button-wedding {
   right: 0;
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 1px 1px 0;
 }
 
 /* --- Media Queries para Responsividade --- */
@@ -1961,7 +1961,7 @@ footer p {
     gap: 0.6rem;
   }
   .gallery-item {
-    border-radius: 5px;
+    border-radius: 1px;
   }
   .close-button-wedding {
     font-size: 30px;

@@ -51,7 +51,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 2px; /* Bordas arredondadas para os itens da galeria */
+    border-radius: 1px; /* Bordas arredondadas para os itens da galeria */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
     display: block;
@@ -115,7 +115,7 @@
     max-height: 50vw;
     height: auto;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Sombra para o modal */
-    border-radius: 3px; /* Cantos arredondados */
+    border-radius: 1px; /* Cantos arredondados */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,7 +126,7 @@
     max-width: 100%;
     max-height: calc(100% - 60px); // Ajusta para a altura da caption
     display: block;
-    border-radius: 8px 8px 0 0; // Cantos arredondados apenas no topo da imagem
+    border-radius: 1px 1px 0 0; // Cantos arredondados apenas no topo da imagem
 }
 
 .caption-text-wedding {
@@ -137,7 +137,7 @@
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 0 0 8px 8px; // Cantos arredondados na base da caption
+    border-radius: 0 0 1px 1px; // Cantos arredondados na base da caption
 }
 
 /* Botão de Fechar o Modal */
@@ -175,7 +175,7 @@
     font-weight: bold;
     font-size: 30px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 1px 1px 0;
     user-select: none;
     -webkit-user-select: none;
     opacity: 0.6; /* Levemente transparente */
@@ -189,12 +189,12 @@
 
 .prev-button-wedding {
     left: 0;
-    border-radius: 3px 0 0 3px;
+    border-radius: 1px 0 0 1px;
 }
 
 .next-button-wedding {
     right: 0;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 1px 1px 0;
 }
 
 
@@ -226,7 +226,7 @@
     }
 
     .gallery-item {
-        border-radius: 5px;
+        border-radius: 1px;
     }
 
     .close-button-wedding {

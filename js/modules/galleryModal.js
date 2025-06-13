@@ -8,57 +8,71 @@ export function initializeGalleryModal() {
     const prevBtn = document.querySelector('.prev-button-gallery');
     const nextBtn = document.querySelector('.next-button-gallery');
 
-    let currentImages = [];
-    let currentIndex = 0;
+    let currentImages = []; // Lista de imagens da galeria ativa
+    let currentIndex = 0;   // Índice da imagem atual na galeria ativa
 
     // Verificação de existência dos elementos essenciais do modal
     if (!modal || !modalImg || !captionText || !closeBtn || !prevBtn || !nextBtn) {
         console.warn("Um ou mais elementos do modal da galeria (IDs/classes 'galleryModal*', 'close-button-gallery', etc.) não foram encontrados. O modal da galeria não será inicializado.");
-        return; // Sai da função se os elementos não existirem
+        return;
     }
 
-    // Seleciona todas as imagens que devem abrir neste modal.
-    // Assegure-se de que seus itens de galeria tenham a classe .gallery-item
-    // e que a imagem tenha o atributo data-full-src e data-caption.
-    const galleryItems = document.querySelectorAll('.photo-grid .gallery-item img, .portfolio-category .portfolio-item img');
+    // Seletores para todas as imagens que podem abrir o modal (sejam de galerias ou carrosséis)
+    // Se o seu carrossel tem uma classe pai específica (ex: .my-carousel), adicione-a aqui
+    const allGalleryTriggers = document.querySelectorAll(
+        '.photo-grid .gallery-item img, ' +
+        '.portfolio-category .portfolio-item img, ' +
+        '.swiper-container .swiper-slide img' // Adicionado para carrossel Swiper
+    );
 
-    if (galleryItems.length === 0) {
-        console.log("Nenhuma imagem encontrada com os seletores da galeria (.photo-grid .gallery-item img, .portfolio-category .portfolio-item img). O modal de galeria funcionará apenas se as imagens forem adicionadas dinamicamente ou por outro script.");
-        // Neste caso, o modal não terá imagens para navegar, mas os listeners básicos ainda estarão lá.
+    if (allGalleryTriggers.length === 0) {
+        console.log("Nenhuma imagem encontrada com os seletores da galeria. O modal de galeria pode não ter conteúdo para exibir.");
     } else {
-        // Adiciona listener de clique para cada imagem da galeria
-        galleryItems.forEach((img, index) => {
-            img.style.cursor = 'pointer'; // Adiciona cursor de ponteiro para indicar que é clicável
+        allGalleryTriggers.forEach((img, index) => {
+            img.style.cursor = 'pointer';
             img.addEventListener('click', () => {
-                // Atualiza a lista de imagens e o índice atual ao clicar
-                // Isso é importante se você tiver múltiplas galerias e só quer navegar nas imagens da galeria clicada.
-                // Se todas as imagens de .photo-grid e .portfolio-category são uma única galeria, este filtro está ok.
-                currentImages = Array.from(galleryItems);
-                currentIndex = index;
+                console.log("DEBUG: Imagem clicada:", img);
+
+                // **NOVIDADE AQUI:** Identifica o contêiner pai da imagem clicada
+                let parentGallery = img.closest('.photo-grid, .portfolio-category, .swiper-container');
+
+                if (parentGallery) {
+                    // Coleta APENAS as imagens do contêiner pai específico
+                    currentImages = Array.from(parentGallery.querySelectorAll('img[data-full-src]'));
+                    currentIndex = currentImages.indexOf(img); // Garante que o índice é o correto dentro da sub-galeria
+                    console.log(`DEBUG: Imagens da galeria atual (${parentGallery.className}):`, currentImages.length);
+                } else {
+                    // Fallback: se não encontrar um pai específico, pega todas as imagens elegíveis
+                    currentImages = Array.from(allGalleryTriggers);
+                    currentIndex = index; // O índice original no querySelectorAll completo
+                    console.log("DEBUG: Não encontrou contêiner pai específico. Usando todas as imagens elegíveis.");
+                }
+
                 openModal(img.getAttribute('data-full-src'), img.alt, img.getAttribute('data-caption'));
             });
         });
     }
 
     function openModal(src, alt, caption) {
+        console.log("DEBUG: openModal() chamado com src:", src);
         modal.classList.add('is-open');
         modalImg.src = src;
         modalImg.alt = alt;
-        captionText.textContent = caption || alt || ''; // Usa caption, alt ou vazio
+        captionText.textContent = caption || alt || '';
         modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Impede o scroll do body
-        modal.focus(); // Coloca o foco no modal para acessibilidade
+        document.body.style.overflow = 'hidden';
+        modal.focus();
     }
 
     function closeModal() {
+        console.log("DEBUG: Fechando modal.");
         modal.classList.remove('is-open');
-        modalImg.src = ''; // Limpa a imagem
-        captionText.textContent = ''; // Limpa a legenda
+        modalImg.src = '';
+        captionText.textContent = '';
         modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = ''; // Restaura o scroll do body
+        document.body.style.overflow = '';
     }
 
-    // Event Listeners para o modal
     closeBtn.addEventListener('click', closeModal);
 
     prevBtn.addEventListener('click', () => {
@@ -66,6 +80,7 @@ export function initializeGalleryModal() {
             currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
             const img = currentImages[currentIndex];
             openModal(img.getAttribute('data-full-src'), img.alt, img.getAttribute('data-caption'));
+            console.log("DEBUG: Navegando para imagem anterior. Novo índice:", currentIndex);
         }
     });
 
@@ -74,17 +89,16 @@ export function initializeGalleryModal() {
             currentIndex = (currentIndex + 1) % currentImages.length;
             const img = currentImages[currentIndex];
             openModal(img.getAttribute('data-full-src'), img.alt, img.getAttribute('data-caption'));
+            console.log("DEBUG: Navegando para próxima imagem. Novo índice:", currentIndex);
         }
     });
 
-    // Fechar modal clicando no fundo (mas não na imagem ou botões de navegação)
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) { // Apenas se o clique for diretamente no fundo do modal
+        if (e.target === modal || e.target.classList.contains('close-button-gallery')) {
             closeModal();
         }
     });
 
-    // Navegação por teclado (Escape para fechar, setas para navegar)
     document.addEventListener('keydown', (e) => {
         if (modal.classList.contains('is-open')) {
             if (e.key === 'Escape') {

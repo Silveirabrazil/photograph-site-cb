@@ -111,7 +111,7 @@ header {
   z-index: 1060; /* Garante que ele esteja acima de outros elementos */
   /* ... seus outros estilos de fundo, altura, etc. ... */
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
-  height: 6vw; /* Altura responsiva */
+  height: 8vw; /* Altura responsiva */
   min-height: 80px; /* Altura mínima para desktop */
   box-shadow: var(--shadow-light);
   transition: background 0.5s ease;
@@ -130,10 +130,10 @@ header {
 
 .logo img {
   /* Ajuste inicial do tamanho do logo para telas maiores, se necessário */
-  width: 70%; /* Mantenha 70% da largura do seu container .logo */
+  width: 90%; /* Mantenha 70% da largura do seu container .logo */
   height: auto;
   display: block;
-  max-width: 180px; /* Um max-width para evitar que o logo fique gigante em telas muito largas */
+  max-width: 250px; /* Um max-width para evitar que o logo fique gigante em telas muito largas */
   min-width: 120px; /* Um min-width para garantir que não fique minúsculo em desktop/tablet */
   transition: width 0.3s ease; /* Transição para o redimensionamento */
 }
@@ -183,7 +183,7 @@ header {
   align-items: center;
   justify-content: center;
   width: auto;
-  padding: 0.5rem 1rem;
+  padding: 2rem 1rem;
   border-radius: 2px;
   text-align: center;
   font-weight: 600; /* Pode ser o weight padrão para os links */
@@ -197,13 +197,13 @@ header {
 /* Para telas até 1024px (tablets e notebooks pequenos) */
 @media (max-width: 1024px) {
   header {
-    height: 8vw; /* Ajusta a altura um pouco para tablets */
+    height: 10vw; /* Ajusta a altura um pouco para tablets */
     min-height: 70px; /* Mantém uma altura mínima razoável */
     padding: 0 15px;
   }
   .logo img {
-    width: 60%;
-    max-width: 150px;
+    width: 80%;
+    max-width: 250px;
     min-width: 100px;
   }
   .menu {
@@ -280,7 +280,7 @@ header {
     padding: 0 5px;
   }
   .logo img {
-    width: 40%;
+    width: 60%;
     max-width: 100px;
     min-width: 70px;
   }
@@ -292,11 +292,6 @@ header {
   }
 }
 /* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
-body {
-  padding-top: 80px; /* Adicione um padding no body para compensar o header fixo. Ajuste este valor para a altura mínima do seu header em desktop. */
-  overflow-x: hidden; /* Evita scroll horizontal indesejado */
-}
-
 @media (max-width: 1024px) {
   body {
     padding-top: 70px; /* Ajusta o padding para tablets */
@@ -1014,7 +1009,7 @@ footer p {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
 }
 

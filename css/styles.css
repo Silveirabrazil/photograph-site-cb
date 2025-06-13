@@ -1049,9 +1049,10 @@ footer p {
   max-width: calc(90vw - 17px); /* Ajuste conforme a necessidade do seu layout */
   width: calc(90vw - 17px); /* Mantenha a largura que você queria para a seção */
   height: auto; /* **IMPORTANTE:** Defina uma altura para o seu carrossel */
+  min-height: 30vw;
   overflow: hidden; /* Garante que os slides não "vazem" para fora do contêiner */
   position: relative; /* Necessário para posicionar botões e paginação */
-  margin: 2rem auto; /* Centraliza o carrossel na página */
+  margin: 1rem, 1rem, 1rem, 1rem; /* Centraliza o carrossel na página */
   /* Adicione outras propriedades como box-shadow, border-radius aqui se desejar para o contêiner do carrossel */
 }
 
@@ -1060,13 +1061,13 @@ footer p {
   font-size: 18px; /* Tamanho da fonte padrão (se houver texto no slide) */
   background: #f0f0f0; /* Cor de fundo padrão para os slides (pode ser transparente) */
   display: flex; /* Para centralizar o conteúdo/imagem dentro do slide */
-  justify-content: center; /* **CORREÇÃO:** Era justify-self. Deve ser justify-content para flexbox */
+  justify-content: top; /* **CORREÇÃO:** Era justify-self. Deve ser justify-content para flexbox */
   align-items: center; /* Centraliza os itens verticalmente */
-  margin-top: 2rem; /* Margem superior do slide */
-  margin-bottom: 2rem; /* Margem inferior do slide */
+  margin-top: 1.5rem; /* Margem superior do slide */
+  margin-bottom: 0.5rem; /* Margem inferior do slide */
   background-color: transparent !important; /* Se o fundo branco vier do slide */
-  padding-bottom: 2rem; /* Preenchimento inferior do slide */
-  width: 20vw;
+  padding-bottom: 1rem; /* Preenchimento inferior do slide */
+  width: 40vw;
 }
 
 /* --- Estilos para a imagem dentro de cada slide --- */
@@ -1074,6 +1075,7 @@ footer p {
   display: block; /* Ajustado de flex para block, que é mais comum para imagens */
   width: 100%; /* Imagem ocupa 100% da largura do slide */
   height: 30vw; /* Altura da imagem baseada na largura da viewport */
+  min-height: 5vw;
   object-fit: cover; /* Garante que a imagem preencha o slide sem distorcer, cortando se necessário */
   border-radius: 3px; /* Borda arredondada nas imagens */
   box-shadow: var(--shadow-light, 0px 4px 8px rgba(0, 0, 0, 0.15)); /* Sombra para as imagens (com fallback) */

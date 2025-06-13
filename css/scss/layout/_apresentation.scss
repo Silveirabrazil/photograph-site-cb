@@ -1,6 +1,6 @@
 /* --- 5. Seção de Apresentação --- */
 .apresentation {
-    width: 100%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
+    width: 100%; /* Garante que a seção ocupe 100% da largura disponível */
     max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
     margin: 4rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
     padding: 4rem; /* Adiciona preenchimento interno para o conteúdo */
@@ -13,12 +13,10 @@
 
 /* Regra mais específica para a imagem dentro de .apresentation */
 .apresentation img {
-    /* Removida a classe .img-apresentation redundante, o seletor .apresentation img já é suficiente */
-    max-width: 30vw; /* Largura máxima da imagem em relação à viewport em desktop */
-    height: 100%; /* Mantém a proporção da imagem */
+    max-width: 40vw; /* Largura máxima da imagem em relação à viewport em desktop */
+    height: auto; /* Mantém a proporção da imagem (sempre use auto para height com width/max-width) */
     display: block; /* Remove espaços extras indesejados abaixo da imagem */
     flex-shrink: 0; /* Impede que a imagem encolha se não houver espaço suficiente */
-    width: auto; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
     object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
     border-radius: 3px; /* Adiciona bordas arredondadas à imagem */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave na imagem */
@@ -36,19 +34,23 @@
 }
 
 .apresentation .name h2 {
-    color: #e4e6e5; /* Cor do texto do nome */
-    font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-    font-size: 4rem; /* Tamanho da fonte do nome */
-    line-height: 1.2; /* Espaçamento entre linhas do nome */
-    margin-bottom: 0.5rem; /* Espaçamento entre o nome e o parágrafo */
+    color: #e4e6e5;
+    font-family: var(--font-primary);
+    /* Usando clamp para um tamanho de fonte responsivo e controlado */
+    /* Mínimo: 1.8rem, Preferencial: 3vw, Máximo: 2.8rem (ajuste esses valores) */
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
 
 .apresentation p {
-    color: #e4e6e5; /* Cor do texto do parágrafo */
-    font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-    font-size: 1.6rem; /* Tamanho da fonte do parágrafo */
-    line-height: 1.5; /* Espaçamento entre linhas do parágrafo */
-    margin-bottom: 0; /* Remove margem inferior para o último elemento do contêiner */
+    color: #e4e6e5;
+    font-family: var(--font-primary);
+    /* Usando clamp para um tamanho de fonte responsivo e controlado */
+    /* Mínimo: 1rem, Preferencial: 1.6vw, Máximo: 1.5rem (ajuste esses valores) */
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    line-height: 1.5;
+    margin-bottom: 0;
     width: 85%; /* Ocupa toda a largura disponível do .apresentation-content */
 }
 
@@ -57,16 +59,17 @@
     .apresentation {
         flex-direction: column; /* Em telas menores, foto fica em cima do texto */
         padding: 1.5rem; /* Ajusta o preenchimento interno em telas menores */
-        width: 100%; /* Ocupa 100% da largura da tela em mobile, garantindo o fundo total */
-        margin: 1.5rem auto; /* Centraliza e ajusta a margem em telas menores */
+        width: 100%; /* Continua ocupando 100% da largura da tela */
         min-height: auto; /* Remove a altura mínima fixa em mobile para se ajustar ao conteúdo */
+        margin: 2rem auto; /* Ajusta margem para mobile */
+        gap: 1.5rem; /* Ajusta espaçamento entre imagem e texto */
     }
 
     .apresentation img {
-        width: 70%; /* A imagem ocupa 80% da largura do contêiner .apresentation */
-        max-width: 250px; /* Limita o tamanho máximo da imagem em telas menores */
+        width: 70%; /* A imagem ocupa 70% da largura do contêiner .apresentation */
+        max-width: 280px; /* Limita o tamanho máximo da imagem em telas menores (ajuste conforme necessário) */
         height: auto; /* Garante que a proporção da imagem é mantida */
-        margin-bottom: 1.5rem; /* Adiciona margem abaixo da foto quando em coluna */
+        margin-bottom: 0; /* Remove margem abaixo da foto pois o gap já a controla */
     }
 
     .apresentation-content {
@@ -77,11 +80,25 @@
         padding: 0 1rem; /* Ajusta o padding para mobile */
     }
 
-    .apresentation .name h2 {
-        font-size: 2rem; /* Ajusta o tamanho da fonte do nome para mobile */
+    /* As fontes agora são controladas pelo clamp em suas regras gerais,
+       então não precisamos de ajustes específicos aqui, a menos que queira
+       um comportamento MUITO diferente para mobile. O clamp já gerencia isso. */
+    /* .apresentation .name h2 {
+        font-size: 8vw; // Exemplo de um tamanho muito grande para mobile, evite se já usa clamp
     }
 
     .apresentation p {
-        font-size: 1rem; /* Ajusta o tamanho da fonte do parágrafo para mobile */
+        font-size: 4vw; // Exemplo de um tamanho grande para mobile, evite se já usa clamp
+    } */
+}
+
+/* Considerar um breakpoint para telas muito grandes para limitar o 'vw' */
+@media (min-width: 1600px) {
+    .apresentation .name h2 {
+        font-size: 2.8rem; /* Fixa o tamanho máximo para h2 em telas muito grandes */
+    }
+
+    .apresentation p {
+        font-size: 1.5rem; /* Fixa o tamanho máximo para p em telas muito grandes */
     }
 }

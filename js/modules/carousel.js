@@ -19,7 +19,7 @@ export function initSwiperCarousel() {
     const swiper = new Swiper(swiperContainer, {
         direction: 'horizontal',
         loop: true,
-        slidesPerView: 5,
+        slidesPerView: 5.5,
         spaceBetween: 10,
         centeredSlides: true,
         grabCursor: true,
@@ -41,22 +41,22 @@ export function initSwiperCarousel() {
 
         breakpoints: {
             320: {
-                slidesPerView: 1.2, // Ajuste para 1.2 ou 1.5 para dar uma sensação de que tem mais slides
+                slidesPerView: 3.2, // Ajuste para 1.2 ou 1.5 para dar uma sensação de que tem mais slides
                 spaceBetween: 10,
                 centeredSlides: true, // Centraliza em telas pequenas para que o item ativo esteja no meio
             },
             480: { // Um breakpoint intermediário para celulares maiores
-                slidesPerView: 2.2,
+                slidesPerView: 3.2,
                 spaceBetween: 15,
                 centeredSlides: true,
             },
             768: {
-                slidesPerView: 3.5, // Ajuste para 3.5 para mostrar parte do próximo slide
+                slidesPerView: 4.5, // Ajuste para 3.5 para mostrar parte do próximo slide
                 spaceBetween: 20,
                 centeredSlides: true
             },
             1024: {
-                slidesPerView: 5,
+                slidesPerView: 5.2,
                 spaceBetween: 25,
                 centeredSlides: true
             }

@@ -1,113 +1,237 @@
 /* --- 2. Navbar (Menu Superior) --- */
 
 header {
-    /* O header será fixo no topo, flutuando sobre o conteúdo */
-    position:absolute ; /* 'fixed' é geralmente preferível para headers que devem permanecer visíveis ao rolar */
+    position: absolute; /* Isso é crucial para que ele fique no topo */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1060; /* Garante que o header fique acima de tudo */
+    z-index: 1060; /* Garante que ele esteja acima de outros elementos */
+    /* ... seus outros estilos de fundo, altura, etc. ... */
 
-    /* Aqui definimos o degradê no header */
     background: linear-gradient(
-        to bottom,                  /* De cima para baixo */
-        rgba(0, 0, 0, 0.9),         /* Começa com preto semi-transparente (ajuste a opacidade aqui) */
-        rgba(0, 0, 0, 0.2)            /* Termina totalmente transparente */
+        to bottom,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.2)
     );
-    /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
 
-    /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
-    height: 6vw; /* Exemplo: Ajuste esta altura para o seu header */
-    min-height: 80px; /* Garante uma altura mínima para o header */
+    height: 6vw; /* Altura responsiva */
+    min-height: 80px; /* Altura mínima para desktop */
 
-    box-shadow: var(--shadow-light); /* Sombra no header */
+    box-shadow: var(--shadow-light);
     transition: background 0.5s ease;
-    display: flex; /* Adicione flexbox para alinhar o navbar dentro do header */
-    align-items: center; /* Centraliza o navbar verticalmente no header */
-    padding: 0 20px; /* Adiciona um padding horizontal para não grudar nas bordas */
+    display: flex;
+    align-items: center;
+  
 }
 
 .navbar {
-    width: 100%; /* Ocupa a largura total do header */
-    max-width: 1200px; /* Limite de largura para o conteúdo da navbar */
-    margin: 0 auto; /* Centraliza a navbar */
+    width: 100%;
+    max-width: 80vw;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espaça logo e menu */
+    justify-content: space-between;
 }
 
 .logo img {
-    
-    width: 70%;
+    /* Ajuste inicial do tamanho do logo para telas maiores, se necessário */
+    width: 70%; /* Mantenha 70% da largura do seu container .logo */
     height: auto;
     display: block;
+    max-width: 180px; /* Um max-width para evitar que o logo fique gigante em telas muito largas */
+    min-width: 120px; /* Um min-width para garantir que não fique minúsculo em desktop/tablet */
+    transition: width 0.3s ease; /* Transição para o redimensionamento */
 }
 
+/* Oculta o botão de menu hambúrguer por padrão em telas grandes */
+.menu-toggle {
+    display: none;
+    font-size: 2.5rem; /* Tamanho do ícone */
+    color: #dcdcdc;
+    cursor: pointer;
+    z-index: 1070; /* Garante que ele esteja acima do menu quando aberto */
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: rgb(207, 153, 69);
+}
+
+
 .menu {
-    display: flex;
+    display: flex; /* Menu em linha para desktop */
     align-items: center;
-    gap: 5rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
-    padding: 0; /* Remove padding padrão de UL */
-    margin: 0; /* Remove margem padrão de UL */
+    gap: 3rem; /* Espaçamento entre os itens do menu para desktop */
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Remove marcadores de lista */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Para animação do menu mobile */
 }
 
 .menu a {
     text-decoration: none;
-    color: #dcdcdc; /* Cor padrão, pode ser var(--color-primary) */
-    font-weight: 300; /* Mantenha o font-weight fixo aqui */
-    font-size: 1.5rem;
-    transition: color 0.3s ease, text-shadow 0.3s ease; /* Adicione text-shadow na transição */
+    color: #dcdcdc;
+    font-weight: 300;
+    font-size: 1.5rem; /* Tamanho da fonte para desktop */
+    transition: color 0.3s ease; /* Removido text-shadow da transição para simplificar */
 }
 
 .menu a:hover {
     color: rgb(207, 153, 69);
-    font-weight: 400; /* Mantenha o font-weight o mesmo para garantir que não haja mudança de layout */
-    transition: font-weight 0.8s ease-in-out;
-    transition: color 0.8s
-                                        /* 'currentColor' usa a cor atual do texto */
-    /* Você pode ajustar o 1px para um valor menor (0.5px) para um efeito mais sutil,
-       ou aumentar (2px) para algo mais pronunciado. */
+    /* Remova o font-weight: 400; no hover, pois causa mudança de layout. */
+    /* A transição de font-weight deve ser aplicada apenas se você mudar o weight de forma sutil,
+       e geralmente não no hover para links de navegação simples. */
 }
 
 /* Estilos para os itens específicos do menu */
-.menu li { /* Aplique estilos aos LIs diretamente, não às classes separadas se forem apenas para links */
+.menu li {
     display: flex;
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
-    width: auto; /* Deixa a largura automática */
-    padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 0.5rem 1rem;
     border-radius: 2px;
     text-align: center;
-    font-weight: 600; /* Pode ser definido aqui ou no `a` */
+    font-weight: 600; /* Pode ser o weight padrão para os links */
 }
 
-/* Efeitos de hover para os itens do menu (os LIs) */
-.menu li:hover {
+/* Remova o hover do li se o hover do a já for suficiente */
+/* .menu li:hover {
     transition: background-color 0.3s ease-in-out;
-}
+} */
 
-/* Media Queries para Responsividade (adaptando o header) */
-@media (max-width: 768px) {
+
+/* --- Media Queries para Responsividade --- */
+
+/* Para telas até 1024px (tablets e notebooks pequenos) */
+@media (max-width: 1024px) {
     header {
-        height: 10vw; /* Altura menor para telas menores */
-        min-height: 60px;
-        padding: 0 10px;
+        height: 8vw; /* Ajusta a altura um pouco para tablets */
+        min-height: 70px; /* Mantém uma altura mínima razoável */
+        padding: 0 15px;
     }
 
     .logo img {
-        height: 6vw;
-        max-height: 60px;
+        width: 60%;
+        max-width: 150px;
+        min-width: 100px;
     }
 
     .menu {
-        gap: 1rem;
+        gap: 2rem; /* Diminui o espaçamento entre os itens */
     }
 
     .menu a {
-        font-size: 1rem;
+        font-size: 1.3rem; /* Diminui o tamanho da fonte */
+    }
+}
+
+
+/* Para telas até 768px (tablets em modo retrato e celulares grandes) */
+@media (max-width: 768px) {
+    header {
+        height: 10vw; /* Aumenta a altura proporcionalmente para mobile */
+        min-height: 65px; /* Altura mínima para mobile */
+        padding: 0 10px;
+    }
+
+    .navbar {
+        max-width: 95vw; /* Permite que a navbar ocupe mais espaço na tela */
+    }
+
+    .logo img {
+        width: 50%; /* Diminui o logo ainda mais */
+        max-width: 120px; /* Limite máximo para o logo em mobile */
+        min-width: 80px; /* Limite mínimo para o logo em mobile */
+    }
+
+    .menu {
+        /* Transforma o menu em um overlay vertical */
+        flex-direction: column;
+        justify-content: center; /* Centraliza itens verticalmente */
+        align-items: center; /* Centraliza itens horizontalmente */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Inicia fora da tela */
+        width: 100%;
+        height: 100vh; /* Ocupa a altura total da viewport */
+        background-color: rgba(0, 0, 0, 0.95); /* Fundo escuro semi-transparente */
+        padding: 0;
+        margin: 0;
+        gap: 2rem; /* Espaçamento vertical entre os itens do menu */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 1065; /* Acima do header, mas abaixo do menu-toggle */
+        transition: right 0.5s ease-in-out; /* Animação para o menu deslizar */
+        opacity: 0; /* Inicia invisível */
+        pointer-events: none; /* Impede cliques quando invisível */
+    }
+
+    .menu.active {
+        right: 0; /* Desliza para a tela */
+        opacity: 1; /* Torna visível */
+        pointer-events: auto; /* Permite cliques */
+    }
+
+    .menu a {
+        font-size: 1.8rem; /* Aumenta um pouco a fonte para facilitar o toque */
+        padding: 10px 0; /* Padding vertical para os links */
+        width: 100%; /* Ocupa a largura total para cada link */
+        text-align: center;
     }
 
     .menu li {
-        padding: 0.3rem 0.8rem;
+        width: 80%; /* Largura dos itens do menu */
+        margin: 0.5rem 0; /* Margem vertical entre os itens */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+        padding: 0; /* Remove padding do li se o 'a' já tem */
+    }
+
+    .menu li:last-child {
+        border-bottom: none; /* Remove a borda do último item */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o ícone do hambúrguer */
+    }
+}
+
+/* Para telas até 480px (celulares pequenos) */
+@media (max-width: 480px) {
+    header {
+        height: 12vw; /* Altura do header para celulares menores */
+        min-height: 60px; /* Altura mínima */
+        padding: 0 5px;
+    }
+
+    .logo img {
+        width: 40%;
+        max-width: 100px;
+        min-width: 70px;
+    }
+
+    .menu-toggle {
+        font-size: 2rem; /* Diminui o tamanho do ícone */
+    }
+
+    .menu a {
+        font-size: 1.5rem; /* Ajusta a fonte para celulares menores */
+    }
+}
+
+/* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
+body {
+    padding-top: 80px; /* Adicione um padding no body para compensar o header fixo. Ajuste este valor para a altura mínima do seu header em desktop. */
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding-top: 70px; /* Ajusta o padding para tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 65px; /* Ajusta o padding para celulares */
     }
 }

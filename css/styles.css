@@ -109,24 +109,30 @@ header {
   left: 0;
   width: 100%;
   z-index: 1060;
+  /* MANTIDO O BACKGROUND LINEAR-GRADIENT QUE VOCÊ AFIRMOU SER TRANSPARENTE O SUFICIENTE */
+  /* Se a intenção é que seja 100% transparente SEMPRE, o "background: transparent;" ou
+     um rgba com alpha 0.0 seria o ideal. No entanto, se o que você tem JÁ FUNCIONA
+     como "transparente" para o seu propósito, vamos manter como está. */
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+  /* MANTIDO A BOX-SHADOW COMO ESTÁ, JÁ QUE VOCÊ AFIRMOU NÃO PRECISAR DE BORDAS/PADDINGS
+     E SEU VAR(--shadow-light) PODE SER BEM SUTIL. */
+  box-shadow: var(--shadow-light);
+  transition: background 0.5s ease; /* MANTIDO A TRANSIÇÃO APENAS PARA BACKGROUND */
   height: 8vw;
   min-height: 80px;
-  box-shadow: var(--shadow-light);
-  transition: background 0.5s ease;
-  display: flex; /* Mantido display flex para alinhar o .navbar */
-  align-items: center; /* Centraliza o .navbar verticalmente dentro do header */
-  padding: 0 20px; /* Adicionado padding para o header para telas maiores */
-  box-sizing: border-box; /* Garante que padding não adicione largura */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .navbar {
-  width: 100%; /* Ocupa 100% da largura disponível dentro do header */
-  max-width: 80vw; /* Limite máximo para desktop */
-  margin: 0 auto; /* Centraliza a navbar em telas maiores */
-  display: flex; /* FUNDAMENTAL: Transforma a navbar em um contêiner flexível */
-  align-items: center; /* Centraliza verticalmente os itens (logo, menu, toggle) */
-  justify-content: space-between; /* FUNDAMENTAL: Empurra logo para esquerda e menu/toggle para direita */
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo img {
@@ -140,15 +146,15 @@ header {
 
 /* Oculta o botão de menu hambúrguer por padrão em telas grandes */
 .menu-toggle {
-  display: none; /* Escondido por padrão (desktop) */
+  display: none;
   font-size: 2.5rem;
   color: #dcdcdc;
   cursor: pointer;
   z-index: 1070;
   transition: color 0.3s ease;
-  background: none; /* Garante que não tenha fundo padrão de botão */
-  border: none; /* Garante que não tenha borda padrão de botão */
-  padding: 0; /* Remova padding padrão de botão se você já estiliza o ícone */
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .menu-toggle:hover {
@@ -156,7 +162,7 @@ header {
 }
 
 .menu {
-  display: flex; /* Menu em linha para desktop */
+  display: flex;
   align-items: center;
   gap: 3rem;
   padding: 0;
@@ -182,7 +188,7 @@ header {
   align-items: center;
   justify-content: center;
   width: auto;
-  padding: 2rem 1rem; /* Mantenha esse padding se for para a área clicável do item */
+  padding: 2rem 1rem;
   border-radius: 2px;
   text-align: center;
   font-weight: 600;
@@ -194,7 +200,7 @@ header {
   header {
     height: 10vw;
     min-height: 70px;
-    padding: 0 15px; /* Ajuste o padding do header */
+    padding: 0 15px;
   }
   .logo img {
     width: 80%;
@@ -213,12 +219,12 @@ header {
   header {
     height: 10vw;
     min-height: 65px;
-    padding: 0 10px; /* Ajuste o padding do header para mobile */
+    padding: 0 10px;
   }
   .navbar {
-    max-width: 100%; /* Permite que a navbar ocupe toda a largura em mobile */
-    padding: 0 10px; /* Adiciona padding interno à navbar para espaçamento nas laterais */
-    box-sizing: border-box; /* Inclui padding na largura total */
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
   .logo img {
     width: 50%;
@@ -240,7 +246,7 @@ header {
     gap: 2rem;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
     z-index: 1065;
-    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transição também para opacidade */
+    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;
     pointer-events: none;
   }
@@ -259,13 +265,13 @@ header {
     width: 80%;
     margin: 0.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0; /* Remova padding do li se o 'a' já tem */
+    padding: 0;
   }
   .menu li:last-child {
     border-bottom: none;
   }
   .menu-toggle {
-    display: block; /* Mostra o ícone do hambúrguer em mobile */
+    display: block;
   }
 }
 /* Para telas até 480px (celulares pequenos) */
@@ -273,10 +279,10 @@ header {
   header {
     height: 12vw;
     min-height: 60px;
-    padding: 0 5px; /* Ajuste o padding do header para celulares muito pequenos */
+    padding: 0 5px;
   }
   .navbar {
-    padding: 0 5px; /* Ajusta o padding interno da navbar para celulares muito pequenos */
+    padding: 0 5px;
   }
   .logo img {
     width: 60%;
@@ -288,28 +294,6 @@ header {
   }
   .menu a {
     font-size: 1.5rem;
-  }
-}
-/* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
-/* Geralmente, você adiciona um padding-top ao body ou à primeira seção */
-body {
-  padding-top: 80px; /* Ajuste de acordo com a altura mínima do seu header */
-  /* ou dinamicamente com JS se o header tiver altura variável */
-}
-
-@media (max-width: 1024px) {
-  body {
-    padding-top: 70px;
-  }
-}
-@media (max-width: 768px) {
-  body {
-    padding-top: 65px; /* Altura mínima do header em mobile */
-  }
-}
-@media (max-width: 480px) {
-  body {
-    padding-top: 60px; /* Altura mínima do header em celulares pequenos */
   }
 }
 /* Variáveis globais (certifique-se de que estão definidas no seu arquivo CSS principal) */

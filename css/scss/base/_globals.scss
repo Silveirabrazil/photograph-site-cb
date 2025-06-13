@@ -1,39 +1,58 @@
-// scss/base/_globals.scss (CORRIGIDO)
+// scss/base/_globals.scss (CORRIGIDO - SOMENTE DOSIS)
+
+// Importa a fonte Dosis do Google Fonts.
+// Esta linha deve estar no TOPO do seu arquivo SCSS ou CSS principal,
+// antes de qualquer outra regra de estilo.
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+/* Regras para variáveis globais */
+:root {
+    --font-primary: 'Dosis', sans-serif; // Dosis é agora a única fonte primária
+    // Removida --font-secondary (Raleway)
+    --text-color: #333; // Exemplo de cor de texto padrão
+    --bg-body: #f4f4f4; // Exemplo de cor de fundo do corpo
+    --color-primary: #007bff; // Exemplo de cor primária
+    --color-white: #fff; // Exemplo de cor branca
+    --shadow-light: 0 2px 5px rgba(0,0,0,0.1); // Exemplo de sombra
+    --max-width: 1200px; // Exemplo de largura máxima para o conteúdo
+}
+
+
+/* Reset básico e box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Dosis sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
     box-sizing: border-box;
-    font-family: Dosis sans-serif;
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
 }
 
+/* Base para HTML e Body */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    overflow-x: hidden; // Previne rolagem horizontal
+    min-height: 100vh; // Garante que o corpo ocupe pelo menos a altura total da viewport
+    display: flex; // Permite o uso de flexbox no layout principal
+    flex-direction: column; // Conteúdo principal e footer em coluna
 }
 
 body {
-    font-family: Dosis sans-serif;
+    font-family: var(--font-primary); /* **Aqui aplicamos a fonte Dosis globalmente** */
     line-height: 1.6;
-    color: var(--text-color); /* Usando sua nova variável */
-    background-color: var(--bg-body); /* Usando sua nova variável */
-    /* overflow-x: hidden; // Já definido acima para html, body */
+    color: var(--text-color);
+    background-color: var(--bg-body);
 }
 
+/* Estilos de elementos comuns */
 a {
     text-decoration: none;
     color: var(--color-primary);
@@ -51,21 +70,21 @@ main {
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    max-width: var(--max-width);
-    flex-grow: 1;
+    max-width: var(--max-width); // Limita a largura do conteúdo principal
+    flex-grow: 1; // Permite que o main ocupe o espaço restante disponível
 }
 
 footer {
-    background: var(--color-primary); /* Ajustado para usar sua variável */
+    background: var(--color-primary);
     padding: 2rem 0 1rem;
     margin-top: 3rem;
-    box-shadow: var(--shadow-light); /* Ajustado para usar sua variável */
+    box-shadow: var(--shadow-light);
     text-align: center;
     width: 100%;
 }
 
 footer p {
-    color: var(--color-white); /* Ajustado para usar sua variável */
+    color: var(--color-white);
     font-size: 0.9rem;
     margin-top: 1.5rem;
 }

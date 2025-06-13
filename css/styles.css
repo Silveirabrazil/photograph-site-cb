@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
 :root {
   --bg-body: rgba(255, 255, 255, 0.0);
   --color-dark: #151513;
@@ -19,23 +20,34 @@
   --font-secondary: "Dosis", sans-serif;
 }
 
+/* Regras para variáveis globais */
+:root {
+  --font-primary: "Dosis", sans-serif;
+  --text-color: #333;
+  --bg-body: #f4f4f4;
+  --color-primary: #007bff;
+  --color-white: #fff;
+  --shadow-light: 0 2px 5px rgba(0,0,0,0.1);
+  --max-width: 1200px;
+}
+
+/* Reset básico e box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Dosis sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
-  font-family: Dosis sans-serif;
 }
 
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
+/* Base para HTML e Body */
 html, body {
   margin: 0;
   padding: 0;
@@ -47,13 +59,13 @@ html, body {
 }
 
 body {
-  font-family: Dosis sans-serif;
+  font-family: var(--font-primary); /* **Aqui aplicamos a fonte Dosis globalmente** */
   line-height: 1.6;
-  color: var(--text-color); /* Usando sua nova variável */
-  background-color: var(--bg-body); /* Usando sua nova variável */
-  /* overflow-x: hidden; // Já definido acima para html, body */
+  color: var(--text-color);
+  background-color: var(--bg-body);
 }
 
+/* Estilos de elementos comuns */
 a {
   text-decoration: none;
   color: var(--color-primary);
@@ -76,16 +88,16 @@ main {
 }
 
 footer {
-  background: var(--color-primary); /* Ajustado para usar sua variável */
+  background: var(--color-primary);
   padding: 2rem 0 1rem;
   margin-top: 3rem;
-  box-shadow: var(--shadow-light); /* Ajustado para usar sua variável */
+  box-shadow: var(--shadow-light);
   text-align: center;
   width: 100%;
 }
 
 footer p {
-  color: var(--color-white); /* Ajustado para usar sua variável */
+  color: var(--color-white);
   font-size: 0.9rem;
   margin-top: 1.5rem;
 }

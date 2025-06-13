@@ -18,11 +18,11 @@ export function initializeGalleryModal() {
     }
 
     // Seletores para todas as imagens que podem abrir o modal (sejam de galerias ou carrosséis)
-    // Se o seu carrossel tem uma classe pai específica (ex: .my-carousel), adicione-a aqui
     const allGalleryTriggers = document.querySelectorAll(
-        '.photo-grid .gallery-item img, ' +
-        '.portfolio-category .portfolio-item img, ' +
-        '.swiper-container .swiper-slide img' // Adicionado para carrossel Swiper
+        '.photo-grid .gallery-item img, ' + // Para grades de fotos (se você tiver)
+        '.portfolio-category .portfolio-item img, ' + // Para itens de portfólio (se você tiver)
+        '.swiper .swiper-slide img, ' + // Adicionado/Corrigido para carrossel Swiper
+        '.feature-item-header img' // Adicionado para as imagens dentro das seções "feature-item"
     );
 
     if (allGalleryTriggers.length === 0) {
@@ -33,19 +33,20 @@ export function initializeGalleryModal() {
             img.addEventListener('click', () => {
                 console.log("DEBUG: Imagem clicada:", img);
 
-                // **NOVIDADE AQUI:** Identifica o contêiner pai da imagem clicada
-                let parentGallery = img.closest('.photo-grid, .portfolio-category, .swiper-container');
+                // Identifica o contêiner pai da imagem clicada para agrupar as imagens da "galeria"
+                // Ajustado para incluir '.feature-item-header' como um "pai" de galeria
+                let parentGallery = img.closest('.photo-grid, .portfolio-category, .swiper, .feature-item');
 
                 if (parentGallery) {
-                    // Coleta APENAS as imagens do contêiner pai específico
+                    // Coleta APENAS as imagens do contêiner pai específico que têm data-full-src
                     currentImages = Array.from(parentGallery.querySelectorAll('img[data-full-src]'));
                     currentIndex = currentImages.indexOf(img); // Garante que o índice é o correto dentro da sub-galeria
                     console.log(`DEBUG: Imagens da galeria atual (${parentGallery.className}):`, currentImages.length);
                 } else {
-                    // Fallback: se não encontrar um pai específico, pega todas as imagens elegíveis
-                    currentImages = Array.from(allGalleryTriggers);
-                    currentIndex = index; // O índice original no querySelectorAll completo
-                    console.log("DEBUG: Não encontrou contêiner pai específico. Usando todas as imagens elegíveis.");
+                    // Fallback: se não encontrar um pai específico, pega todas as imagens elegíveis com data-full-src
+                    currentImages = Array.from(document.querySelectorAll('img[data-full-src]'));
+                    currentIndex = currentImages.indexOf(img); // Garante que o índice é o correto dentro da lista completa
+                    console.log("DEBUG: Não encontrou contêiner pai específico. Usando todas as imagens elegíveis com data-full-src.");
                 }
 
                 openModal(img.getAttribute('data-full-src'), img.alt, img.getAttribute('data-caption'));
@@ -58,23 +59,26 @@ export function initializeGalleryModal() {
         modal.classList.add('is-open');
         modalImg.src = src;
         modalImg.alt = alt;
-        captionText.textContent = caption || alt || '';
+        captionText.textContent = caption || alt || ''; // Usa caption, alt, ou string vazia
         modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        modal.focus();
+        document.body.style.overflow = 'hidden'; // Impede o scroll do body
+        modal.focus(); // Coloca o foco no modal para acessibilidade
     }
 
     function closeModal() {
         console.log("DEBUG: Fechando modal.");
         modal.classList.remove('is-open');
-        modalImg.src = '';
-        captionText.textContent = '';
+        modalImg.src = ''; // Limpa a imagem
+        captionText.textContent = ''; // Limpa a legenda
         modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        document.body.style.overflow = ''; // Restaura o scroll do body
+        // Opcional: tentar devolver o foco para o elemento que abriu o modal (mais complexo de implementar)
     }
 
+    // Event listeners para fechar o modal
     closeBtn.addEventListener('click', closeModal);
 
+    // Event listeners para navegação
     prevBtn.addEventListener('click', () => {
         if (currentImages.length > 0) {
             currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
@@ -93,12 +97,14 @@ export function initializeGalleryModal() {
         }
     });
 
+    // Fechar modal ao clicar no fundo
     modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('close-button-gallery')) {
+        if (e.target === modal) { // Apenas se clicar diretamente no fundo do modal
             closeModal();
         }
     });
 
+    // Fechar e navegar com teclas
     document.addEventListener('keydown', (e) => {
         if (modal.classList.contains('is-open')) {
             if (e.key === 'Escape') {

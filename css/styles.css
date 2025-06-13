@@ -1105,39 +1105,21 @@ footer p {
   /* Propriedades base do card */
   border-radius: 8px; /* Cantos arredondados */
   overflow: hidden; /* Garante que o conteúdo não vaze dos cantos arredondados */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
   text-decoration: none; /* Remove sublinhado se o card for um link */
-  color: black;
-  position: relative; /* ESSENCIAL para posicionamento absoluto dos filhos (card-content-overlay) */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
   display: block;
   background-color: transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-card:hover {
   transform: translateY(-5px); /* Efeito de "subir" no hover */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Sombra mais intensa no hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Sombra mais intensa no hover */
 }
 
-/* Overlay de escurecimento sobre a imagem no hover (mantido) */
-.portfolio-card::before {
-  content: ""; /* Essencial para pseudo-elementos */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Começa totalmente transparente */
-  transition: background-color 0.3s ease; /* Transição suave da cor */
-  z-index: 1; /* Garante que o overlay fique acima da imagem */
-  pointer-events: none; /* Permite que o mouse interaja com o card por baixo do overlay */
-}
-
-.portfolio-card:hover::before {
-  background-color: rgba(0, 0, 0, 0.4); /* Escurece para 40% de opacidade no hover */
-}
-
-/* Estilo do wrapper da imagem para manter a proporção (mantido) */
+/* REMOVIDO: pseudo-elemento ::before e seus estilos, pois o overlay no hover não é mais necessário para o layout da imagem. */
+/* Se você quiser um efeito de escurecimento *apenas* na imagem no hover, você pode aplicá-lo à .card-image-wrapper img */
+/* Estilo do wrapper da imagem para manter a proporção */
 .card-image-wrapper {
   width: 100%;
   padding-bottom: 75%; /* Proporção 4:3 (altura é 75% da largura) */
@@ -1152,84 +1134,62 @@ footer p {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
-  transition: transform 0.3s ease; /* Transição para o zoom da imagem */
   object-position: center; /* Ajusta o foco da imagem para o centro */
+  transition: transform 0.3s ease; /* Transição para o zoom da imagem */
 }
 
 .portfolio-card:hover .card-image-wrapper img {
   transform: scale(1.05); /* Pequeno zoom na imagem no hover */
 }
 
-/* MODIFICADO: Camada de conteúdo que sobrepõe a imagem */
-.card-content-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* NOVO: Contêiner para o texto que fica na parte branca abaixo da imagem */
+.card-text-content {
+  background-color: white;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  box-sizing: border-box;
-  z-index: 2;
-  text-align: center;
-  color: white;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(255, 255, 255, 0.8) 85%, rgb(255, 255, 255) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.portfolio-card:hover .card-content-overlay {
-  opacity: 1;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 /* Estilos para a Localização (Ex: RIO DE JANEIRO) */
 .card-location {
   font-family: var(--font-primary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0.3rem 0.8rem;
-  border-radius: 3px;
-  white-space: nowrap;
-  color: white;
+  letter-spacing: 0.5px;
+  color: #888;
+  margin-bottom: 0.5rem;
 }
 
 /* Estilos para o Título Principal (Ex: CASAMENTO - JANA + MATT) */
 .card-title {
   font-family: var(--font-primary);
-  font-size: 1.5rem;
-  color: white;
-  margin: auto 0;
-  text-align: center;
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
   line-height: 1.2;
-  padding: 0 0.5rem;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0 0.2rem;
 }
 
-/* MODIFICADO: Estilos para o botão "VER FOTOS" */
+/* Estilos para o texto "VER FOTOS" */
 .card-view-photos {
   font-family: var(--font-primary);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: transparent;
-  color: black;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
+  color: #555;
+  margin-top: 1rem;
   display: inline-block;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease;
 }
 
 .portfolio-card:hover .card-view-photos {
   color: var(--color-primary);
-  border-color: var(--color-primary);
 }
 
 /* --- Media Queries para responsividade dos cards --- */
@@ -1238,18 +1198,17 @@ footer p {
     padding: 2rem 1rem;
   }
   .portfolio-category {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
   }
   .card-location {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   .card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .card-view-photos {
-    font-size: 0.75rem;
-    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
   }
 }
 @media (max-width: 480px) {
@@ -1258,7 +1217,7 @@ footer p {
     gap: 1rem;
   }
   .card-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 /* css/scss/components/_contact-page.scss */

@@ -22,39 +22,24 @@
     /* Propriedades base do card */
     border-radius: 8px; /* Cantos arredondados */
     overflow: hidden; /* Garante que o conteúdo não vaze dos cantos arredondados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
     text-decoration: none; /* Remove sublinhado se o card for um link */
-    color: black; // Cor padrão do texto (agora para elementos não sobrepostos/específicos)
-    position: relative; /* ESSENCIAL para posicionamento absoluto dos filhos (card-content-overlay) */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
-    display: block; // Garante que o .portfolio-card se comporte como um bloco para o position: relative
-    background-color: transparent; // Remove o fundo do card, deixando a imagem dominar
+    display: block; // Garante que o .portfolio-card se comporte como um bloco
+    background-color: transparent; // O fundo branco virá do .card-text-content
+
+    // NOVO: Transição para o card completo no hover
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-card:hover {
     transform: translateY(-5px); /* Efeito de "subir" no hover */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Sombra mais intensa no hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Sombra mais intensa no hover */
 }
 
-/* Overlay de escurecimento sobre a imagem no hover (mantido) */
-.portfolio-card::before {
-    content: ''; /* Essencial para pseudo-elementos */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Começa totalmente transparente */
-    transition: background-color 0.3s ease; /* Transição suave da cor */
-    z-index: 1; /* Garante que o overlay fique acima da imagem */
-    pointer-events: none; /* Permite que o mouse interaja com o card por baixo do overlay */
-}
+/* REMOVIDO: pseudo-elemento ::before e seus estilos, pois o overlay no hover não é mais necessário para o layout da imagem. */
+/* Se você quiser um efeito de escurecimento *apenas* na imagem no hover, você pode aplicá-lo à .card-image-wrapper img */
 
-.portfolio-card:hover::before {
-    background-color: rgba(0, 0, 0, 0.4); /* Escurece para 40% de opacidade no hover */
-}
-
-/* Estilo do wrapper da imagem para manter a proporção (mantido) */
+/* Estilo do wrapper da imagem para manter a proporção */
 .card-image-wrapper {
     width: 100%;
     padding-bottom: 75%; /* Proporção 4:3 (altura é 75% da largura) */
@@ -69,97 +54,64 @@
     width: 100%;
     height: 100%;
     object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
-    transition: transform 0.3s ease; /* Transição para o zoom da imagem */
     object-position: center; /* Ajusta o foco da imagem para o centro */
+    transition: transform 0.3s ease; /* Transição para o zoom da imagem */
 }
 
 .portfolio-card:hover .card-image-wrapper img {
     transform: scale(1.05); /* Pequeno zoom na imagem no hover */
 }
 
-/* MODIFICADO: Camada de conteúdo que sobrepõe a imagem */
-.card-content-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* NOVO: Contêiner para o texto que fica na parte branca abaixo da imagem */
+.card-text-content {
+    background-color: white; // Fundo branco como na imagem
+    padding: 1rem 1.5rem 1.5rem; // Espaçamento interno: topo, laterais, fundo
+    text-align: center; // Centraliza o texto
     display: flex;
     flex-direction: column;
-    justify-content: space-between; // Espaçamento entre top, middle e bottom
-    align-items: center; // Centraliza horizontalmente o conteúdo
-    padding: 1rem;
-    box-sizing: border-box;
-    z-index: 2; // Acima do overlay de hover
-    text-align: center;
-    color: white; // Cor padrão para todo o texto no overlay (será sobrescrita para "VER FOTOS")
-
-    // NOVO: Gradiente transparente para escuro no topo, e branco na base.
-    // Ajuste a altura do gradiente conforme necessário.
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.5) 0%,      // Começa 50% preto no topo
-        rgba(0, 0, 0, 0) 30%,       // Transiciona para transparente em 30% da altura
-        rgba(0, 0, 0, 0) 70%,       // Fica transparente até 70%
-        rgba(255, 255, 255, 0.8) 85%, // Começa a transicionar para branco perto do fim
-        rgba(255, 255, 255, 1) 100% // Fica totalmente branco na base
-    );
-    opacity: 0; // Inicia invisível
-    transition: opacity 0.3s ease; // Transição suave para aparecer no hover
-}
-
-.portfolio-card:hover .card-content-overlay {
-    opacity: 1; // Fica visível no hover
+    align-items: center;
+    justify-content: center; // Centraliza verticalmente o conteúdo (se houver espaço extra)
+    gap: 0.5rem; // Espaçamento entre os elementos de texto
 }
 
 /* Estilos para a Localização (Ex: RIO DE JANEIRO) */
 .card-location {
-    font-family: var(--font-primary);
-    font-size: 0.9rem;
+    font-family: var(--font-primary); // Usando Dosis
+    font-size: 0.85rem; // Menor que o título
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5); // Fundo semi-transparente para a localização
-    padding: 0.3rem 0.8rem;
-    border-radius: 3px;
-    white-space: nowrap;
-    color: white; // Garante que a localização seja branca
+    letter-spacing: 0.5px;
+    color: #888; // Cor cinza claro como na imagem
+    margin-bottom: 0.5rem; // Espaçamento abaixo da localização
 }
 
 
 /* Estilos para o Título Principal (Ex: CASAMENTO - JANA + MATT) */
 .card-title {
-    font-family: var(--font-primary); // Usando Dosis para o título principal
-    font-size: 1.5rem;
-    color: white; // Título em branco
-    margin: auto 0;
-    text-align: center;
+    font-family: var(--font-primary); // Usando Dosis
+    font-size: 1.4rem; // Tamanho para o título principal
+    color: #333; // Cor escura como na imagem
+    margin: 0; // Remove margens padrão
     line-height: 1.2;
-    padding: 0 0.5rem;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); // Sombra de texto para melhor legibilidade
+    font-weight: 600; // Mais forte como na imagem
+    text-transform: uppercase; // Maiúsculas como na imagem
+    padding: 0 0.2rem; // Pequeno padding horizontal para não colar
 }
 
-/* MODIFICADO: Estilos para o botão "VER FOTOS" */
+/* Estilos para o texto "VER FOTOS" */
 .card-view-photos {
-    font-family: var(--font-primary);
-    font-size: 0.85rem;
+    font-family: var(--font-primary); // Usando Dosis
+    font-size: 0.8rem; // Tamanho menor
     text-transform: uppercase;
     letter-spacing: 1px;
-    background-color: transparent; // Remove o fundo do botão para que o gradiente apareça
-    color: black; // **Cor do texto em preto para se destacar no fundo branco**
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    display: inline-block;
-    margin-bottom: 0.5rem; // Espaçamento da parte inferior
-    transition: background-color 0.3s ease, color 0.3s ease; // Transição também para a cor do texto
-    border: 1px solid rgba(0,0,0,0.3); // Adiciona uma borda leve para definir o "botão"
+    color: #555; // Cor cinza escuro para o link
+    margin-top: 1rem; // Espaçamento acima do texto "VER FOTOS"
+    display: inline-block; // Para aplicar margens e paddings se necessário
+    // text-decoration: underline; // Adicionar sublinhado se desejar, não aparente na imagem
+    transition: color 0.3s ease; // Transição suave para a cor do texto
 }
 
 .portfolio-card:hover .card-view-photos {
-    // Não precisa de darken() aqui, já que o fundo é transparente e a cor do texto é o foco
-    // Se quiser um efeito no texto, pode ser:
-    color: var(--color-primary); // Mudar a cor do texto para a cor primária no hover, por exemplo
-    border-color: var(--color-primary); // Mudar a cor da borda no hover
+    color: var(--color-primary); // Mudar a cor do texto para a cor primária no hover
 }
 
 
@@ -171,31 +123,30 @@
     }
 
     .portfolio-category {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Ajuste para telas menores
         gap: 1.5rem;
     }
 
     .card-location {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .card-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .card-view-photos {
-        font-size: 0.75rem;
-        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
     }
 }
 
 @media (max-width: 480px) {
     .portfolio-category {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; // Uma coluna em telas muito pequenas
         gap: 1rem;
     }
 
     .card-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }

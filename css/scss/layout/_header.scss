@@ -219,16 +219,3 @@ header {
 }
 
 /* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
-
-
-@media (max-width: 1024px) {
-    body {
-        padding-top: 70px; /* Ajusta o padding para tablets */
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding-top: 65px; /* Ajusta o padding para celulares */
-    }
-}

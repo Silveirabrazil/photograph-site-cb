@@ -292,16 +292,6 @@ header {
   }
 }
 /* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
-@media (max-width: 1024px) {
-  body {
-    padding-top: 70px; /* Ajusta o padding para tablets */
-  }
-}
-@media (max-width: 768px) {
-  body {
-    padding-top: 65px; /* Ajusta o padding para celulares */
-  }
-}
 /* Variáveis globais (certifique-se de que estão definidas no seu arquivo CSS principal) */
 :root {
   --color-primary: rgb(207, 153, 69); /* Cor primária, o seu dourado/laranja */

@@ -25,7 +25,7 @@
 // (Módulos de UI reutilizáveis: botões, cards, carrosséis genéricos, modais, o banner PADRÃO)
 @import 'components/bannerHome';   // <--- O banner padrão (para index.html)
 @import 'components/carousel'; // Seu carrossel principal
-@import 'components/modal';  
+@import 'components/modal-gallery';  
 @import 'components/bannerPages';
 @import 'components/gallery-cards';
 @import 'components/contact-page.scss'; 

@@ -1859,7 +1859,6 @@ footer p {
   height: auto;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Sombra para o modal */
   border-radius: 3px; /* Cantos arredondados */
-  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1879,7 +1878,6 @@ footer p {
   font-size: 1rem;
   padding: 10px 15px;
   text-align: center;
-  background-color: var(--color-black);
   width: 100%;
   box-sizing: border-box;
   border-radius: 0 0 8px 8px;

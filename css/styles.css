@@ -104,48 +104,51 @@ footer p {
 
 /* --- 2. Navbar (Menu Superior) --- */
 header {
-  position: absolute; /* Isso é crucial para que ele fique no topo */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1060; /* Garante que ele esteja acima de outros elementos */
-  /* ... seus outros estilos de fundo, altura, etc. ... */
+  z-index: 1060;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
-  height: 8vw; /* Altura responsiva */
-  min-height: 80px; /* Altura mínima para desktop */
+  height: 8vw;
+  min-height: 80px;
   box-shadow: var(--shadow-light);
   transition: background 0.5s ease;
-  display: flex;
-  align-items: center;
+  display: flex; /* Mantido display flex para alinhar o .navbar */
+  align-items: center; /* Centraliza o .navbar verticalmente dentro do header */
+  padding: 0 20px; /* Adicionado padding para o header para telas maiores */
+  box-sizing: border-box; /* Garante que padding não adicione largura */
 }
 
 .navbar {
-  width: 100%;
-  max-width: 80vw;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%; /* Ocupa 100% da largura disponível dentro do header */
+  max-width: 80vw; /* Limite máximo para desktop */
+  margin: 0 auto; /* Centraliza a navbar em telas maiores */
+  display: flex; /* FUNDAMENTAL: Transforma a navbar em um contêiner flexível */
+  align-items: center; /* Centraliza verticalmente os itens (logo, menu, toggle) */
+  justify-content: space-between; /* FUNDAMENTAL: Empurra logo para esquerda e menu/toggle para direita */
 }
 
 .logo img {
-  /* Ajuste inicial do tamanho do logo para telas maiores, se necessário */
-  width: 90%; /* Mantenha 70% da largura do seu container .logo */
+  width: 90%;
   height: auto;
   display: block;
-  max-width: 250px; /* Um max-width para evitar que o logo fique gigante em telas muito largas */
-  min-width: 120px; /* Um min-width para garantir que não fique minúsculo em desktop/tablet */
-  transition: width 0.3s ease; /* Transição para o redimensionamento */
+  max-width: 250px;
+  min-width: 120px;
+  transition: width 0.3s ease;
 }
 
 /* Oculta o botão de menu hambúrguer por padrão em telas grandes */
 .menu-toggle {
-  display: none;
-  font-size: 2.5rem; /* Tamanho do ícone */
+  display: none; /* Escondido por padrão (desktop) */
+  font-size: 2.5rem;
   color: #dcdcdc;
   cursor: pointer;
-  z-index: 1070; /* Garante que ele esteja acima do menu quando aberto */
+  z-index: 1070;
   transition: color 0.3s ease;
+  background: none; /* Garante que não tenha fundo padrão de botão */
+  border: none; /* Garante que não tenha borda padrão de botão */
+  padding: 0; /* Remova padding padrão de botão se você já estiliza o ícone */
 }
 
 .menu-toggle:hover {
@@ -155,51 +158,43 @@ header {
 .menu {
   display: flex; /* Menu em linha para desktop */
   align-items: center;
-  gap: 3rem; /* Espaçamento entre os itens do menu para desktop */
+  gap: 3rem;
   padding: 0;
   margin: 0;
-  list-style: none; /* Remove marcadores de lista */
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Para animação do menu mobile */
+  list-style: none;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .menu a {
   text-decoration: none;
   color: #dcdcdc;
   font-weight: 300;
-  font-size: 1.5rem; /* Tamanho da fonte para desktop */
-  transition: color 0.3s ease; /* Removido text-shadow da transição para simplificar */
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .menu a:hover {
   color: rgb(207, 153, 69);
-  /* Remova o font-weight: 400; no hover, pois causa mudança de layout. */
-  /* A transição de font-weight deve ser aplicada apenas se você mudar o weight de forma sutil,
-     e geralmente não no hover para links de navegação simples. */
 }
 
-/* Estilos para os itens específicos do menu */
 .menu li {
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem; /* Mantenha esse padding se for para a área clicável do item */
   border-radius: 2px;
   text-align: center;
-  font-weight: 600; /* Pode ser o weight padrão para os links */
+  font-weight: 600;
 }
 
-/* Remova o hover do li se o hover do a já for suficiente */
-/* .menu li:hover {
-    transition: background-color 0.3s ease-in-out;
-} */
 /* --- Media Queries para Responsividade --- */
 /* Para telas até 1024px (tablets e notebooks pequenos) */
 @media (max-width: 1024px) {
   header {
-    height: 10vw; /* Ajusta a altura um pouco para tablets */
-    min-height: 70px; /* Mantém uma altura mínima razoável */
-    padding: 0 15px;
+    height: 10vw;
+    min-height: 70px;
+    padding: 0 15px; /* Ajuste o padding do header */
   }
   .logo img {
     width: 80%;
@@ -207,77 +202,81 @@ header {
     min-width: 100px;
   }
   .menu {
-    gap: 2rem; /* Diminui o espaçamento entre os itens */
+    gap: 2rem;
   }
   .menu a {
-    font-size: 1.3rem; /* Diminui o tamanho da fonte */
+    font-size: 1.3rem;
   }
 }
 /* Para telas até 768px (tablets em modo retrato e celulares grandes) */
 @media (max-width: 768px) {
   header {
-    height: 10vw; /* Aumenta a altura proporcionalmente para mobile */
-    min-height: 65px; /* Altura mínima para mobile */
-    padding: 0 10px;
+    height: 10vw;
+    min-height: 65px;
+    padding: 0 10px; /* Ajuste o padding do header para mobile */
   }
   .navbar {
-    max-width: 95vw; /* Permite que a navbar ocupe mais espaço na tela */
+    max-width: 100%; /* Permite que a navbar ocupe toda a largura em mobile */
+    padding: 0 10px; /* Adiciona padding interno à navbar para espaçamento nas laterais */
+    box-sizing: border-box; /* Inclui padding na largura total */
   }
   .logo img {
-    width: 50%; /* Diminui o logo ainda mais */
-    max-width: 120px; /* Limite máximo para o logo em mobile */
-    min-width: 80px; /* Limite mínimo para o logo em mobile */
+    width: 50%;
+    max-width: 120px;
+    min-width: 80px;
   }
   .menu {
-    /* Transforma o menu em um overlay vertical */
     flex-direction: column;
-    justify-content: center; /* Centraliza itens verticalmente */
-    align-items: center; /* Centraliza itens horizontalmente */
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
-    right: -100%; /* Inicia fora da tela */
+    right: -100%;
     width: 100%;
-    height: 100vh; /* Ocupa a altura total da viewport */
-    background-color: rgba(0, 0, 0, 0.95); /* Fundo escuro semi-transparente */
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
     padding: 0;
     margin: 0;
-    gap: 2rem; /* Espaçamento vertical entre os itens do menu */
+    gap: 2rem;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 1065; /* Acima do header, mas abaixo do menu-toggle */
-    transition: right 0.5s ease-in-out; /* Animação para o menu deslizar */
-    opacity: 0; /* Inicia invisível */
-    pointer-events: none; /* Impede cliques quando invisível */
+    z-index: 1065;
+    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transição também para opacidade */
+    opacity: 0;
+    pointer-events: none;
   }
   .menu.active {
-    right: 0; /* Desliza para a tela */
-    opacity: 1; /* Torna visível */
-    pointer-events: auto; /* Permite cliques */
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
   }
   .menu a {
-    font-size: 1.8rem; /* Aumenta um pouco a fonte para facilitar o toque */
-    padding: 10px 0; /* Padding vertical para os links */
-    width: 100%; /* Ocupa a largura total para cada link */
+    font-size: 1.8rem;
+    padding: 10px 0;
+    width: 100%;
     text-align: center;
   }
   .menu li {
-    width: 80%; /* Largura dos itens do menu */
-    margin: 0.5rem 0; /* Margem vertical entre os itens */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
-    padding: 0; /* Remove padding do li se o 'a' já tem */
+    width: 80%;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0; /* Remova padding do li se o 'a' já tem */
   }
   .menu li:last-child {
-    border-bottom: none; /* Remove a borda do último item */
+    border-bottom: none;
   }
   .menu-toggle {
-    display: block; /* Mostra o ícone do hambúrguer */
+    display: block; /* Mostra o ícone do hambúrguer em mobile */
   }
 }
 /* Para telas até 480px (celulares pequenos) */
 @media (max-width: 480px) {
   header {
-    height: 12vw; /* Altura do header para celulares menores */
-    min-height: 60px; /* Altura mínima */
-    padding: 0 5px;
+    height: 12vw;
+    min-height: 60px;
+    padding: 0 5px; /* Ajuste o padding do header para celulares muito pequenos */
+  }
+  .navbar {
+    padding: 0 5px; /* Ajusta o padding interno da navbar para celulares muito pequenos */
   }
   .logo img {
     width: 60%;
@@ -285,13 +284,34 @@ header {
     min-width: 70px;
   }
   .menu-toggle {
-    font-size: 2rem; /* Diminui o tamanho do ícone */
+    font-size: 2rem;
   }
   .menu a {
-    font-size: 1.5rem; /* Ajusta a fonte para celulares menores */
+    font-size: 1.5rem;
   }
 }
 /* Ajustes gerais para garantir que o hero-section não fique por baixo do header fixo */
+/* Geralmente, você adiciona um padding-top ao body ou à primeira seção */
+body {
+  padding-top: 80px; /* Ajuste de acordo com a altura mínima do seu header */
+  /* ou dinamicamente com JS se o header tiver altura variável */
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding-top: 70px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 65px; /* Altura mínima do header em mobile */
+  }
+}
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px; /* Altura mínima do header em celulares pequenos */
+  }
+}
 /* Variáveis globais (certifique-se de que estão definidas no seu arquivo CSS principal) */
 :root {
   --color-primary: rgb(207, 153, 69); /* Cor primária, o seu dourado/laranja */

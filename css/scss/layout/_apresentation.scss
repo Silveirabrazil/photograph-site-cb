@@ -2,25 +2,25 @@
 .apresentation {
     width: 100%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
     max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
-    margin: 2rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
-    padding: 2rem; /* Adiciona preenchimento interno para o conteúdo */
+    margin: 4rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
+    padding: 4rem; /* Adiciona preenchimento interno para o conteúdo */
     min-height: 35vw; /* Altura mínima de 30% da altura da viewport em desktop */
     background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo da seção */
     display: flex; /* Habilita Flexbox para alinhar itens */
     align-items: center; /* Centraliza os itens filhos (foto e conteúdo) verticalmente */
-    gap: 2rem; /* Espaçamento entre a imagem e o conteúdo */
+    gap: 1rem; /* Espaçamento entre a imagem e o conteúdo */
 }
 
 /* Regra mais específica para a imagem dentro de .apresentation */
 .apresentation img {
     /* Removida a classe .img-apresentation redundante, o seletor .apresentation img já é suficiente */
     max-width: 30vw; /* Largura máxima da imagem em relação à viewport em desktop */
-    height: auto; /* Mantém a proporção da imagem */
+    height: 100%; /* Mantém a proporção da imagem */
     display: block; /* Remove espaços extras indesejados abaixo da imagem */
     flex-shrink: 0; /* Impede que a imagem encolha se não houver espaço suficiente */
-    width: 60vw; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
+    width: auto; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
     object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
-    border-radius: 3%; /* Adiciona bordas arredondadas à imagem */
+    border-radius: 3px; /* Adiciona bordas arredondadas à imagem */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave na imagem */
 }
 
@@ -30,15 +30,15 @@
     flex-direction: column; /* Coloca os itens filhos (nome e texto) em coluna */
     text-align: left; /* Alinha o texto à esquerda por padrão */
     flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
-    max-width: 70%; /* Define largura máxima para o bloco de texto para legibilidade */
-    margin-left: 8rem; /* Margem à esquerda para o conteúdo em desktop */
-    padding: 3rem; /* Preenchimento para o conteúdo */
+    max-width: 85%; /* Define largura máxima para o bloco de texto para legibilidade */
+    margin-left: 2rem; /* Margem à esquerda para o conteúdo em desktop */
+    padding: 2rem; /* Preenchimento para o conteúdo */
 }
 
 .apresentation .name h2 {
     color: #e4e6e5; /* Cor do texto do nome */
     font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-    font-size: 2.5rem; /* Tamanho da fonte do nome */
+    font-size: 4rem; /* Tamanho da fonte do nome */
     line-height: 1.2; /* Espaçamento entre linhas do nome */
     margin-bottom: 0.5rem; /* Espaçamento entre o nome e o parágrafo */
 }
@@ -46,10 +46,10 @@
 .apresentation p {
     color: #e4e6e5; /* Cor do texto do parágrafo */
     font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-    font-size: 1.1rem; /* Tamanho da fonte do parágrafo */
+    font-size: 1.6rem; /* Tamanho da fonte do parágrafo */
     line-height: 1.5; /* Espaçamento entre linhas do parágrafo */
     margin-bottom: 0; /* Remove margem inferior para o último elemento do contêiner */
-    width: 100%; /* Ocupa toda a largura disponível do .apresentation-content */
+    width: 85%; /* Ocupa toda a largura disponível do .apresentation-content */
 }
 
 /* --- Responsividade para Telas Menores (Mobile) --- */

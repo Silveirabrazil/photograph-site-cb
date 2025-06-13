@@ -10,7 +10,7 @@
   --color-primary: #cf9945;
   --color-secondary: #cf9945;
   --color-accent: #cf9945;
-  --border-radius-large: 8px;
+  --border-radius-large: 2%;
   --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
   --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.2);
   --shadow-dark: 0 6px 30px rgba(0, 0, 0, 0.3);
@@ -114,7 +114,7 @@ header {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
   /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
   /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
-  height: 12vw; /* Exemplo: Ajuste esta altura para o seu header */
+  height: 6vw; /* Exemplo: Ajuste esta altura para o seu header */
   min-height: 80px; /* Garante uma altura mínima para o header */
   box-shadow: var(--shadow-light); /* Sombra no header */
   transition: background 0.5s ease;
@@ -133,32 +133,32 @@ header {
 }
 
 .logo img {
-  height: 4vw; /* Mantém a altura da logo responsiva */
-  max-height: 80px; /* Define uma altura máxima para a logo */
+  width: 70%;
+  height: auto;
   display: block;
 }
 
 .menu {
-  list-style: none;
   display: flex;
   align-items: center;
-  gap: 2rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
+  gap: 5rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
   padding: 0; /* Remove padding padrão de UL */
   margin: 0; /* Remove margem padrão de UL */
 }
 
 .menu a {
   text-decoration: none;
-  color: #cf9945; /* Use a variável CSS ou um fallback */
-  font-weight: 500;
-  font-size: 1.2rem; /* Ajustado para melhor legibilidade */
-  transition: color 0.3s ease; /* Transição mais suave para a cor */
+  color: #dcdcdc; /* Cor padrão, pode ser var(--color-primary) */
+  font-weight: 300; /* Mantenha o font-weight fixo aqui */
+  font-size: 1.5rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Adicione text-shadow na transição */
 }
 
 .menu a:hover {
-  color: var(--color-primary, rgb(207, 153, 69)); /* Use a variável CSS ou um fallback para a cor de hover */
-  font-weight: 800;
-  transition: font-weight 0.5s ease-in-out;
+  color: rgb(207, 153, 69);
+  font-weight: 400; /* Mantenha o font-weight o mesmo para garantir que não haja mudança de layout */
+  transition: font-weight 0.8s ease-in-out;
+  transition: color 0.8s;
 }
 
 /* Estilos para os itens específicos do menu */
@@ -168,14 +168,13 @@ header {
   justify-content: center; /* Centraliza horizontalmente */
   width: auto; /* Deixa a largura automática */
   padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
-  border-radius: 3%;
+  border-radius: 2px;
   text-align: center;
   font-weight: 600; /* Pode ser definido aqui ou no `a` */
 }
 
 /* Efeitos de hover para os itens do menu (os LIs) */
 .menu li:hover {
-  background-color: rgba(207, 153, 69, 0.5); /* Use RGBA para um efeito transparente */
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -200,117 +199,232 @@ header {
     padding: 0.3rem 0.8rem;
   }
 }
+/* Variáveis globais (certifique-se de que estão definidas no seu arquivo CSS principal) */
+:root {
+  --color-primary: rgb(207, 153, 69); /* Cor primária, o seu dourado/laranja */
+  --color-text-light: #dcdcdc; /* Cor para texto claro, similar ao do menu */
+  --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave, do header */
+  --font-primary: "Dosis", sans-serif; /* A fonte principal do seu projeto */
+}
+
 /* --- 8. Rodapé (Footer) --- */
 footer {
-  background: #1c1c1c;
-  padding: 2rem 0 1rem;
-  margin-top: 3rem;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+  /* Posição padrão, não 'fixed' ou 'absolute' como o header */
+  width: 100%;
+  z-index: 1070; /* Pode manter um z-index alto se houver sobreposição com outros elementos */
+  /* Espelha o degradê do header, mas pode ser invertido ou ajustado */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+  background-color: rgba(0, 0, 0, 0.9); /* Fallback ou cor sólida */
+  padding: 3rem 2rem 2rem; /* Mais padding superior, ajustado para rem */
+  margin-top: 5rem; /* Aumenta a margem superior para separar do conteúdo */
+  box-shadow: var(--shadow-light); /* Aplica a mesma sombra do header */
   text-align: center;
-  z-index: 1070;
+  transition: background 0.5s ease; /* Transição para o background */
+  /* Usa flexbox para organizar o conteúdo do footer centralmente */
+  display: flex;
+  flex-direction: column; /* Conteúdo em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente (se o height for fixo) */
+}
+
+/* Container interno para limitar a largura do conteúdo, como na navbar */
+.footer-container {
+  width: 100%;
+  max-width: 1200px; /* Limite de largura para o conteúdo do footer */
+  margin: 0 auto; /* Centraliza o container */
 }
 
 .footer-instagram {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* Aumenta a margem para mais espaço */
+  color: var(--color-text-light); /* Cor do texto geral como no menu */
+  font-size: 1rem; /* Ajusta a fonte */
 }
 
 .footer-instagram a {
-  color: var(--color-primary);
-  font-weight: bold;
+  color: var(--color-primary); /* Cor primária para o link */
+  font-weight: 500; /* Peso da fonte como no menu */
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.2s ease-in-out;
+  font-size: 1.2rem; /* Tamanho do link "Ver mais" */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição suave */
 }
 
 .footer-instagram a:hover {
-  color: #e4e6e5;
+  color: var(--color-primary); /* Mantém a cor primária ou um tom ligeiramente diferente */
+  font-weight: 700; /* Pode aumentar o peso da fonte no hover se preferir */
+  text-shadow: 0 0 1px currentColor; /* Efeito de brilho/negrito como no header */
 }
 
 .instagram-photos {
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Ajusta a margem */
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem; /* Aumenta o espaçamento entre as fotos */
   padding: 0 1rem;
 }
 
 .instagram-photos img {
-  width: 48px;
-  height: 48px;
+  width: 60px; /* Aumenta o tamanho das fotos para melhor visualização */
+  height: 60px;
   object-fit: cover;
-  border-radius: 3%;
-  transition: transform 0.2s ease-in-out;
+  border-radius: 4px; /* Suavemente arredondado */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra mais visível nas imagens */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .instagram-photos img:hover {
-  transform: scale(1.1);
+  transform: scale(1.08); /* Efeito de zoom ligeiramente menor para evitar sobreposição */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada no hover */
 }
 
 .footer-menu ul {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem; /* Espaçamento entre os itens do menu (como na navbar) */
   list-style: none;
-  margin: 1.5rem 0;
+  margin: 2.5rem 0; /* Margem ajustada */
   padding: 0;
 }
 
 .footer-menu a {
-  color: #e4e6e5;
+  color: var(--color-text-light); /* Cor padrão para links, como no menu */
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease-in-out;
+  font-weight: 500; /* Peso da fonte como nos links do menu */
+  font-size: 1.1rem; /* Tamanho da fonte como nos links do menu */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição suave */
 }
 
 .footer-menu a:hover {
-  color: #e4e6e5;
+  color: var(--color-primary); /* Cor de hover como no menu */
+  font-weight: 700; /* Efeito de negrito no hover, se desejado */
+  text-shadow: 0 0 1px currentColor; /* Efeito de brilho/negrito */
 }
 
 .footer-social {
-  margin-bottom: 1.5rem;
+  margin-top: 2rem; /* Margem ajustada */
+  margin-bottom: 2rem;
 }
 
 .footer-social a {
-  color: #e4e6e5;
-  margin: 0 0.8rem;
+  color: var(--color-text-light); /* Cor dos ícones, como os links normais */
+  margin: 0 1rem; /* Aumenta o espaçamento entre os ícones */
   text-decoration: none;
-  font-size: 1.5rem;
-  transition: color 0.2s ease-in-out;
+  font-size: 1.8rem; /* Aumenta o tamanho dos ícones */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transição suave e para o transform */
 }
 
 .footer-social a:hover {
-  color: #e4e6e5;
+  color: var(--color-primary); /* Cor no hover */
+  transform: translateY(-3px); /* Efeito de "subir" um pouco no hover */
 }
 
 footer p {
-  color: #e4e6e5; /* Corrigido: Removido o 'var()' desnecessário */
-  font-size: 0.9rem;
-  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.6); /* Texto de copyright mais suave */
+  font-size: 0.85rem; /* Fonte ligeiramente menor para copyright */
+  margin-top: 2rem; /* Margem ajustada */
+  font-family: var(--font-primary); /* Garante a mesma fonte */
+  font-weight: 300; /* Mais leve */
 }
 
+/* --- Media Queries para Responsividade do Footer --- */
+/* Para tablets e telas menores (até 768px) */
+@media (max-width: 768px) {
+  footer {
+    padding: 2.5rem 1.5rem 1.5rem; /* Padding reduzido */
+    margin-top: 4rem;
+  }
+  .footer-instagram a {
+    font-size: 1.1rem;
+  }
+  .instagram-photos {
+    gap: 0.6rem;
+  }
+  .instagram-photos img {
+    width: 50px;
+    height: 50px;
+  }
+  .footer-menu ul {
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .footer-menu a {
+    font-size: 1rem;
+  }
+  .footer-social a {
+    font-size: 1.6rem;
+    margin: 0 0.7rem;
+  }
+  footer p {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+  }
+}
+/* Para telas de celular (até 576px) */
+@media (max-width: 576px) {
+  footer {
+    padding: 2rem 1rem 1rem; /* Padding ainda mais reduzido */
+    margin-top: 3rem;
+  }
+  .footer-instagram {
+    margin-bottom: 1.5rem;
+  }
+  .footer-instagram a {
+    font-size: 1rem;
+  }
+  .instagram-photos {
+    flex-wrap: wrap; /* Permite que as fotos quebrem a linha */
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .instagram-photos img {
+    width: 40px;
+    height: 40px;
+  }
+  .footer-menu ul {
+    flex-direction: column; /* Menu do footer em coluna */
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .footer-menu a {
+    font-size: 1.1rem; /* Aumenta um pouco a fonte para facilitar o toque */
+    padding: 0.5rem 0; /* Adiciona padding para área de clique */
+  }
+  .footer-social {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .footer-social a {
+    font-size: 1.4rem;
+    margin: 0 0.5rem;
+  }
+  footer p {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+}
 /* --- 5. Seção de Apresentação --- */
 .apresentation {
   width: 100%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
   max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
-  margin: 2rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
-  padding: 2rem; /* Adiciona preenchimento interno para o conteúdo */
+  margin: 4rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
+  padding: 4rem; /* Adiciona preenchimento interno para o conteúdo */
   min-height: 35vw; /* Altura mínima de 30% da altura da viewport em desktop */
   background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo da seção */
   display: flex; /* Habilita Flexbox para alinhar itens */
   align-items: center; /* Centraliza os itens filhos (foto e conteúdo) verticalmente */
-  gap: 2rem; /* Espaçamento entre a imagem e o conteúdo */
+  gap: 1rem; /* Espaçamento entre a imagem e o conteúdo */
 }
 
 /* Regra mais específica para a imagem dentro de .apresentation */
 .apresentation img {
   /* Removida a classe .img-apresentation redundante, o seletor .apresentation img já é suficiente */
   max-width: 30vw; /* Largura máxima da imagem em relação à viewport em desktop */
-  height: auto; /* Mantém a proporção da imagem */
+  height: 100%; /* Mantém a proporção da imagem */
   display: block; /* Remove espaços extras indesejados abaixo da imagem */
   flex-shrink: 0; /* Impede que a imagem encolha se não houver espaço suficiente */
-  width: 60vw; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
+  width: auto; /* Definindo uma largura base para a imagem no desktop (pode ajustar) */
   object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer, cortando o excesso */
-  border-radius: 3%; /* Adiciona bordas arredondadas à imagem */
+  border-radius: 3px; /* Adiciona bordas arredondadas à imagem */
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave na imagem */
 }
 
@@ -320,15 +434,15 @@ footer p {
   flex-direction: column; /* Coloca os itens filhos (nome e texto) em coluna */
   text-align: left; /* Alinha o texto à esquerda por padrão */
   flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
-  max-width: 70%; /* Define largura máxima para o bloco de texto para legibilidade */
-  margin-left: 8rem; /* Margem à esquerda para o conteúdo em desktop */
-  padding: 3rem; /* Preenchimento para o conteúdo */
+  max-width: 85%; /* Define largura máxima para o bloco de texto para legibilidade */
+  margin-left: 2rem; /* Margem à esquerda para o conteúdo em desktop */
+  padding: 2rem; /* Preenchimento para o conteúdo */
 }
 
 .apresentation .name h2 {
   color: #e4e6e5; /* Cor do texto do nome */
   font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-  font-size: 2.5rem; /* Tamanho da fonte do nome */
+  font-size: 4rem; /* Tamanho da fonte do nome */
   line-height: 1.2; /* Espaçamento entre linhas do nome */
   margin-bottom: 0.5rem; /* Espaçamento entre o nome e o parágrafo */
 }
@@ -336,10 +450,10 @@ footer p {
 .apresentation p {
   color: #e4e6e5; /* Cor do texto do parágrafo */
   font-family: var(--font-primary); /* Fonte primária definida em variável CSS */
-  font-size: 1.1rem; /* Tamanho da fonte do parágrafo */
+  font-size: 1.6rem; /* Tamanho da fonte do parágrafo */
   line-height: 1.5; /* Espaçamento entre linhas do parágrafo */
   margin-bottom: 0; /* Remove margem inferior para o último elemento do contêiner */
-  width: 100%; /* Ocupa toda a largura disponível do .apresentation-content */
+  width: 85%; /* Ocupa toda a largura disponível do .apresentation-content */
 }
 
 /* --- Responsividade para Telas Menores (Mobile) --- */
@@ -377,15 +491,15 @@ footer p {
   padding: 3rem 1.5rem;
   background-color: var(--color-light-background, #f8f8f8);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 80%;
   margin: 0 auto;
 }
 
 .feature-item {
   background-color: var(--color-white, #fff);
-  border-radius: 3%;
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-decoration: none;
@@ -539,7 +653,7 @@ footer p {
 
 .post {
   background: var(--color-white);
-  border-radius: 3%;
+  border-radius: 2px;
   box-shadow: var(--shadow-light);
   overflow: hidden;
   width: 300px;
@@ -613,7 +727,7 @@ footer p {
     padding-bottom: 1rem;
   }
   .banner-content {
-    width: 95%;
+    width: 100%;
     padding: 1rem;
   }
   .banner-content h1 {
@@ -624,7 +738,7 @@ footer p {
   }
   /* Carrossel */
   .carousel {
-    width: 90%; /* Aumenta a largura do carrossel em telas menores */
+    width: 100%; /* Aumenta a largura do carrossel em telas menores */
   }
   .carousel-item img {
     width: clamp(180px, 45vw, 300px); /* Ajuste de largura para mobile */
@@ -646,15 +760,14 @@ footer p {
   .feature-item {
     flex-direction: column !important; /* Empilha sempre em telas menores */
     text-align: center;
-    padding: 1rem;
-    max-width: 400px;
+    max-width: 100%;
   }
   .feature-item:nth-child(even) .feature-item-content {
     text-align: center; /* Garante que o texto seja centralizado em mobile */
   }
   .feature-item img {
-    width: 60%;
-    max-width: 200px;
+    width: 100%;
+    max-width: 100%;
     margin-bottom: 1rem;
     height: 200px; /* ALTURA FIXA para mobile, ajuste se necessário */
   }
@@ -732,7 +845,7 @@ footer p {
 /* --- Responsividade do Modal para telas menores --- */
 @media only screen and (max-width: 768px) {
   .modal-content {
-    width: 95%;
+    width: 100%;
     max-height: 85vh;
   }
   .close-button {
@@ -773,6 +886,7 @@ footer p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -848,7 +962,7 @@ footer p {
   width: 100%; /* Imagem ocupa 100% da largura do slide */
   height: 30vw; /* Altura da imagem baseada na largura da viewport */
   object-fit: cover; /* Garante que a imagem preencha o slide sem distorcer, cortando se necessário */
-  border-radius: 3%; /* Borda arredondada nas imagens */
+  border-radius: 3px; /* Borda arredondada nas imagens */
   box-shadow: var(--shadow-light, 0px 4px 8px rgba(0, 0, 0, 0.15)); /* Sombra para as imagens (com fallback) */
   /* cursor: grab; é gerenciado pelo Swiper para arraste */
   transition: transform var(--transition-medium, 0.3s ease-in-out), box-shadow var(--transition-medium, 0.3s ease-in-out); /* Transição para hover (com fallback) */
@@ -924,7 +1038,7 @@ footer p {
 
 .swiper-scrollbar-drag { /* Seletor corrigido para CSS puro */
   background: rgba(0, 0, 0, 0.3); /* Cor da "alça" arrastável da barra de rolagem */
-  border-radius: 3%; /* Bordas arredondadas para a alça */
+  border-radius: 3px; /* Bordas arredondadas para a alça */
 }
 
 /* --- Exemplo de onde definir as variáveis CSS (geralmente em :root no seu styles.css principal) --- */
@@ -945,53 +1059,65 @@ footer p {
     --shadow-strong: 0px 12px 24px rgba(0, 0, 0, 0.4);
 }
 */
-/* --- Estilos do Modal --- */
+/* Seu CSS Existente */
+/* Estilos para o Modal de Imagem */
 .modal {
-  display: none; /* Esconde o modal por padrão */
-  position: fixed; /* Fixa o modal na tela */
-  z-index: 2000; /* Garante que o modal esteja acima de tudo (ajuste se necessário) */
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fixo na tela */
+  z-index: 2000; /* Acima de todo o resto */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* Adiciona scroll se o conteúdo for maior que a tela */
-  background-color: rgba(0, 0, 0, 0.9); /* Fundo semi-transparente escuro */
-  justify-content: center; /* Centraliza horizontalmente o modal-content (se display flex) */
-  align-items: center; /* Centraliza verticalmente o modal-content (se display flex) */
-  animation: fadeIn 0.3s ease-out forwards; /* Animação de entrada */
+  overflow: auto; /* Habilita scroll se a imagem for muito grande */
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo preto semi-transparente */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  opacity: 0; /* Começa transparente */
+  transition: opacity 0.3s ease-in-out; /* Transição para opacidade */
 }
 
-.modal.active { /* Classe para mostrar o modal via JS */
-  display: flex; /* Altera para flex para centralizar o conteúdo */
+.modal.is-open {
+  display: flex; /* Mostra o modal como flexbox quando ativo */
+  opacity: 1; /* Torna-o opaco */
 }
 
 .modal-content {
   margin: auto;
   display: block;
-  max-width: 80%; /* Largura máxima da imagem dentro do modal */
-  max-height: 80vh; /* Altura máxima da imagem dentro do modal */
-  object-fit: contain; /* Garante que a imagem caiba no modal sem corte */
-  position: relative; /* Para o caption */
-  padding: 1rem; /* Espaçamento interno */
+  max-width: 90%; /* Largura máxima do conteúdo */
+  max-height: auto; /* Altura máxima da viewport */
+  position: relative; /* Para posicionar a legenda */
 }
 
-.modal-image-display { /* A imagem real dentro do modal */
-  max-width: 100%;
-  max-height: 100%;
-  display: block; /* Remove espaçamento extra */
-  margin: 0 auto; /* Centraliza a imagem */
+.modal-image-display {
+  width: 80vw;
+  max-height: 50vw;
+  height: auto;
+  display: block; /* Remove espaço extra abaixo da imagem */
+  object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  margin: auto;
+}
+
+.caption {
+  margin-top: 0px;
+  text-align: center;
+  color: #ccc; /* Cor da legenda */
+  font-size: 1.2rem;
+  padding: 0 10px;
+  font-family: var(--font-primary, sans-serif); /* Usar a fonte do seu projeto */
 }
 
 .close-button {
   position: absolute;
-  top: 15px;
+  top: 20px;
   right: 35px;
-  color: #f1f1f1;
+  color: #fff;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
   cursor: pointer;
-  z-index: 2001; /* Acima da imagem do modal */
+  z-index: 2001; /* Garante que o botão fique acima da imagem e do fundo */
 }
 
 .close-button:hover,
@@ -1001,36 +1127,22 @@ footer p {
   cursor: pointer;
 }
 
-.caption {
-  margin-top: 15px;
-  text-align: center;
-  color: #ccc;
-  font-size: 1rem;
-  padding: 0 1rem;
-}
-
-/* Animação de entrada do modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-/* Media Queries para o Modal */
+/* Responsividade para o modal */
 @media (max-width: 768px) {
-  .modal-content {
-    max-width: 95%; /* Mais largo em telas pequenas */
-    max-height: 90vh; /* Mais alto em telas pequenas */
-  }
   .close-button {
-    top: 10px;
-    right: 20px;
+    top: 15px;
+    right: 25px;
     font-size: 30px;
   }
   .caption {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
   }
 }
 /* --- Banner para Páginas Internas (page-banner-section) --- */
@@ -1102,7 +1214,7 @@ footer p {
 
 .portfolio-card {
   /* Propriedades base do card */
-  border-radius: 3%; /* Cantos arredondados */
+  border-radius: 2px; /* Cantos arredondados */
   overflow: hidden; /* Garante que o conteúdo não vaze dos cantos arredondados */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
   text-decoration: none; /* Remove sublinhado se o card for um link */
@@ -1331,7 +1443,7 @@ footer p {
 .contact-methods-section .contact-button {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  border-radius: 3%;
+  border-radius: 2px;
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1364,7 +1476,7 @@ footer p {
   flex-wrap: wrap;
   max-width: 1000px;
   margin: 0 auto;
-  border-radius: 3%;
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
@@ -1411,7 +1523,7 @@ footer p {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ccc;
-  border-radius: 3%;
+  border-radius: 2px;
   font-family: var(--font-primary);
   font-size: 1rem;
   box-sizing: border-box; /* Inclui padding na largura */
@@ -1424,7 +1536,7 @@ footer p {
   color: var(--color-white);
   padding: 1rem 2rem;
   border: none;
-  border-radius: 3%;
+  border-radius: 2px;
   font-family: var(--font-primary);
   font-size: 1.1rem;
   font-weight: bold;
@@ -1550,7 +1662,7 @@ footer p {
 }
 .testimonials-section .testimonial-card {
   background-color: var(--color-white);
-  border-radius: 3%;
+  border-radius: 2px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   display: flex;
@@ -1686,7 +1798,7 @@ footer p {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 3%; /* Bordas arredondadas para os itens da galeria */
+  border-radius: 2px; /* Bordas arredondadas para os itens da galeria */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
   display: block;

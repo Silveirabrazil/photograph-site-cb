@@ -20,7 +20,7 @@
 
 .portfolio-card {
     /* Propriedades base do card */
-    border-radius: 3%; /* Cantos arredondados */
+    border-radius: 2px; /* Cantos arredondados */
     overflow: hidden; /* Garante que o conteúdo não vaze dos cantos arredondados */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
     text-decoration: none; /* Remove sublinhado se o card for um link */

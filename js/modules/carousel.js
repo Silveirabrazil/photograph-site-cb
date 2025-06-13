@@ -1,16 +1,10 @@
 // js/modules/carousel.js
 
-// IMPORTAÇÃO CORRIGIDA DO SWIPER
-// Certifique-se de que o Swiper é acessível através deste caminho no seu servidor ou CDN.
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
-
-// REMOVIDO: import { sassFalse } from 'sass'; // Não necessário
-// REMOVIDO: import 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'; // O CSS deve ser linkado no HTML
 
 export function initSwiperCarousel() {
     console.log('Inicializando Swiper Carousel...');
 
-    // O elemento com a classe 'mySwiper' precisa existir no DOM para o Swiper ser inicializado.
     const swiperContainer = document.querySelector('.mySwiper');
     if (!swiperContainer) {
         console.error('Elemento com a classe ".mySwiper" não encontrado. Verifique o HTML.');
@@ -22,55 +16,50 @@ export function initSwiperCarousel() {
         return;
     }
 
-    const swiper = new Swiper(swiperContainer, { // Passamos a referência do elemento
+    const swiper = new Swiper(swiperContainer, {
         direction: 'horizontal',
-        loop: true, // Habilita o loop infinito do carrossel
-        slidesPerView: 5, // Padrão para telas maiores ou quando nenhum breakpoint se aplica
-        spaceBetween: 10, // Espaço entre os slides
-        centeredSlides: true, // Centraliza o slide ativo
-        grabCursor: true, // Altera o cursor para indicar que é arrastável
+        loop: true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+        centeredSlides: true,
+        grabCursor: true,
 
         pagination: {
-            el: '.swiper-pagination', // Seletor para o elemento de paginação
-            clickable: true, // Permite clicar nas bolinhas para navegar
+            el: '.swiper-pagination',
+            clickable: true,
         },
 
         navigation: {
-            nextEl: '.swiper-button-next', // Seletor para o botão "próximo"
-            prevEl: '.swiper-button-prev', // Seletor para o botão "anterior"
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
 
         autoplay: {
-            delay: 3000, // Tempo de espera em ms antes de trocar para o próximo slide
-            disableOnInteraction: false, // O autoplay não para quando o usuário interage com o carrossel
+            delay: 3000,
+            disableOnInteraction: false,
         },
 
-        // Configurações responsivas (breakpoints)
         breakpoints: {
-            // Quando a largura da tela for >= 320px
             320: {
-                slidesPerView: 3, // Exibe 1 slide em telas muito pequenas
+                slidesPerView: 1.2, // Ajuste para 1.2 ou 1.5 para dar uma sensação de que tem mais slides
                 spaceBetween: 10,
-                centeredSlides: true, // Não centraliza em telas pequenas para evitar cortes
+                centeredSlides: true, // Centraliza em telas pequenas para que o item ativo esteja no meio
             },
-            // Quando a largura da tela for >= 768px
+            480: { // Um breakpoint intermediário para celulares maiores
+                slidesPerView: 2.2,
+                spaceBetween: 15,
+                centeredSlides: true,
+            },
             768: {
-                slidesPerView: 2, // Exibe 2 slides em tablets
-                spaceBetween: 10,
-                centeredSlides: true // Centraliza novamente
+                slidesPerView: 3.5, // Ajuste para 3.5 para mostrar parte do próximo slide
+                spaceBetween: 20,
+                centeredSlides: true
             },
-            // Quando a largura da tela for >= 1024px
             1024: {
-                slidesPerView: 5, // Exibe 3 slides em telas maiores
-                spaceBetween: 10,
+                slidesPerView: 5,
+                spaceBetween: 25,
                 centeredSlides: true
             }
-            // OBS: Se você quer 5 slides para 1024px como tinha antes, ajuste aqui:
-            // 1024: {
-            //     slidesPerView: 5,
-            //     spaceBetween: 30,
-            //     centeredSlides: true
-            // }
         },
     });
 

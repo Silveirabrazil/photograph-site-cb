@@ -33,7 +33,7 @@
     width: 100%; /* Imagem ocupa 100% da largura do slide */
     height: 30vw; /* Altura da imagem baseada na largura da viewport */
     object-fit: cover; /* Garante que a imagem preencha o slide sem distorcer, cortando se necessário */
-    border-radius: 3%; /* Borda arredondada nas imagens */
+    border-radius: 3px; /* Borda arredondada nas imagens */
     box-shadow: var(--shadow-light, 0px 4px 8px rgba(0, 0, 0, 0.15)); /* Sombra para as imagens (com fallback) */
     /* cursor: grab; é gerenciado pelo Swiper para arraste */
     transition: transform var(--transition-medium, 0.3s ease-in-out), box-shadow var(--transition-medium, 0.3s ease-in-out); /* Transição para hover (com fallback) */
@@ -111,7 +111,7 @@
 
 .swiper-scrollbar-drag { /* Seletor corrigido para CSS puro */
     background: rgba(0, 0, 0, 0.3); /* Cor da "alça" arrastável da barra de rolagem */
-    border-radius: 3%; /* Bordas arredondadas para a alça */
+    border-radius: 3px; /* Bordas arredondadas para a alça */
 }
 
 /* --- Exemplo de onde definir as variáveis CSS (geralmente em :root no seu styles.css principal) --- */

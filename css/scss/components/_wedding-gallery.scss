@@ -51,7 +51,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 3%; /* Bordas arredondadas para os itens da galeria */
+    border-radius: 2px; /* Bordas arredondadas para os itens da galeria */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para hover */
     display: block;

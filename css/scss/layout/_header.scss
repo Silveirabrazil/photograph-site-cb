@@ -17,7 +17,7 @@ header {
     /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
 
     /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
-    height: 12vw; /* Exemplo: Ajuste esta altura para o seu header */
+    height: 6vw; /* Exemplo: Ajuste esta altura para o seu header */
     min-height: 80px; /* Garante uma altura mínima para o header */
 
     box-shadow: var(--shadow-light); /* Sombra no header */
@@ -37,33 +37,36 @@ header {
 }
 
 .logo img {
-    height: 4vw; /* Mantém a altura da logo responsiva */
-    max-height: 80px; /* Define uma altura máxima para a logo */
+    
+    width: 70%;
+    height: auto;
     display: block;
 }
 
 .menu {
-    list-style: none;
     display: flex;
     align-items: center;
-    gap: 2rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
+    gap: 5rem; /* Espaçamento entre os itens do menu. `5rem` era muito grande. Ajuste conforme preferir. */
     padding: 0; /* Remove padding padrão de UL */
     margin: 0; /* Remove margem padrão de UL */
 }
 
 .menu a {
     text-decoration: none;
-    color:  #cf9945; /* Use a variável CSS ou um fallback */
-    font-weight: 500;
-    font-size: 1.2rem; /* Ajustado para melhor legibilidade */
-    transition: color 0.3s ease; /* Transição mais suave para a cor */
+    color: #dcdcdc; /* Cor padrão, pode ser var(--color-primary) */
+    font-weight: 300; /* Mantenha o font-weight fixo aqui */
+    font-size: 1.5rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Adicione text-shadow na transição */
 }
 
 .menu a:hover {
-    color: var(--color-primary, rgb(207, 153, 69)); /* Use a variável CSS ou um fallback para a cor de hover */
-    font-weight: 800;
-    transition: font-weight 0.5s ease-in-out;
-    
+    color: rgb(207, 153, 69);
+    font-weight: 400; /* Mantenha o font-weight o mesmo para garantir que não haja mudança de layout */
+    transition: font-weight 0.8s ease-in-out;
+    transition: color 0.8s
+                                        /* 'currentColor' usa a cor atual do texto */
+    /* Você pode ajustar o 1px para um valor menor (0.5px) para um efeito mais sutil,
+       ou aumentar (2px) para algo mais pronunciado. */
 }
 
 /* Estilos para os itens específicos do menu */
@@ -73,14 +76,13 @@ header {
     justify-content: center; /* Centraliza horizontalmente */
     width: auto; /* Deixa a largura automática */
     padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
-    border-radius: 3%;
+    border-radius: 2px;
     text-align: center;
     font-weight: 600; /* Pode ser definido aqui ou no `a` */
 }
 
 /* Efeitos de hover para os itens do menu (os LIs) */
 .menu li:hover {
-    background-color:rgb(207, 153, 69, 0.5); /* Use RGBA para um efeito transparente */
     transition: background-color 0.3s ease-in-out;
 }
 

@@ -1,87 +1,229 @@
+/* Variáveis globais (certifique-se de que estão definidas no seu arquivo CSS principal) */
+:root {
+    --color-primary: rgb(207, 153, 69); /* Cor primária, o seu dourado/laranja */
+    --color-text-light: #dcdcdc; /* Cor para texto claro, similar ao do menu */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave, do header */
+    --font-primary: 'Dosis', sans-serif; /* A fonte principal do seu projeto */
+}
+
 /* --- 8. Rodapé (Footer) --- */
 footer {
-    background:#1c1c1c;
-    padding: 2rem 0 1rem;
-    margin-top: 3rem;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    /* Posição padrão, não 'fixed' ou 'absolute' como o header */
+    width: 100%;
+    z-index: 1070; /* Pode manter um z-index alto se houver sobreposição com outros elementos */
+
+    /* Espelha o degradê do header, mas pode ser invertido ou ajustado */
+    background: linear-gradient(
+        to top, /* De baixo para cima, para espelhar o header invertido */
+        rgba(0, 0, 0, 0.9), /* Começa com preto quase opaco no topo do footer */
+        rgba(0, 0, 0, 0.2) /* Termina transparente na parte de baixo do footer */
+    );
+    background-color: rgba(0, 0, 0, 0.9); /* Fallback ou cor sólida */
+
+    padding: 3rem 2rem 2rem; /* Mais padding superior, ajustado para rem */
+    margin-top: 5rem; /* Aumenta a margem superior para separar do conteúdo */
+    box-shadow: var(--shadow-light); /* Aplica a mesma sombra do header */
     text-align: center;
-    z-index: 1070;
+    transition: background 0.5s ease; /* Transição para o background */
+
+    /* Usa flexbox para organizar o conteúdo do footer centralmente */
+    display: flex;
+    flex-direction: column; /* Conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente (se o height for fixo) */
 }
-//#1c1c1c #e4e6e5
+
+/* Container interno para limitar a largura do conteúdo, como na navbar */
+.footer-container {
+    width: 100%;
+    max-width: 1200px; /* Limite de largura para o conteúdo do footer */
+    margin: 0 auto; /* Centraliza o container */
+}
+
 .footer-instagram {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Aumenta a margem para mais espaço */
+    color: var(--color-text-light); /* Cor do texto geral como no menu */
+    font-size: 1rem; /* Ajusta a fonte */
 }
 
 .footer-instagram a {
-    color: var(--color-primary);
-    font-weight: bold;
+    color: var(--color-primary); /* Cor primária para o link */
+    font-weight: 500; /* Peso da fonte como no menu */
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.2s ease-in-out;
+    font-size: 1.2rem; /* Tamanho do link "Ver mais" */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição suave */
 }
 
 .footer-instagram a:hover {
-    color: #e4e6e5;
+    color: var(--color-primary); /* Mantém a cor primária ou um tom ligeiramente diferente */
+    font-weight: 700; /* Pode aumentar o peso da fonte no hover se preferir */
+    text-shadow: 0 0 1px currentColor; /* Efeito de brilho/negrito como no header */
 }
 
 .instagram-photos {
-    margin-top: 1rem;
+    margin-top: 1.5rem; /* Ajusta a margem */
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.8rem; /* Aumenta o espaçamento entre as fotos */
     padding: 0 1rem;
 }
 
 .instagram-photos img {
-    width: 48px;
-    height: 48px;
+    width: 60px; /* Aumenta o tamanho das fotos para melhor visualização */
+    height: 60px;
     object-fit: cover;
-    border-radius: 3%;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 4px; /* Suavemente arredondado */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra mais visível nas imagens */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .instagram-photos img:hover {
-    transform: scale(1.1);
+    transform: scale(1.08); /* Efeito de zoom ligeiramente menor para evitar sobreposição */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada no hover */
 }
 
 .footer-menu ul {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem; /* Espaçamento entre os itens do menu (como na navbar) */
     list-style: none;
-    margin: 1.5rem 0;
+    margin: 2.5rem 0; /* Margem ajustada */
     padding: 0;
 }
 
 .footer-menu a {
-    color: #e4e6e5;
+    color: var(--color-text-light); /* Cor padrão para links, como no menu */
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease-in-out;
+    font-weight: 500; /* Peso da fonte como nos links do menu */
+    font-size: 1.1rem; /* Tamanho da fonte como nos links do menu */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição suave */
 }
 
 .footer-menu a:hover {
-    color:#e4e6e5;
+    color: var(--color-primary); /* Cor de hover como no menu */
+    font-weight: 700; /* Efeito de negrito no hover, se desejado */
+    text-shadow: 0 0 1px currentColor; /* Efeito de brilho/negrito */
 }
 
 .footer-social {
-    margin-bottom: 1.5rem;
+    margin-top: 2rem; /* Margem ajustada */
+    margin-bottom: 2rem;
 }
 
 .footer-social a {
-    color:#e4e6e5;
-    margin: 0 0.8rem;
+    color: var(--color-text-light); /* Cor dos ícones, como os links normais */
+    margin: 0 1rem; /* Aumenta o espaçamento entre os ícones */
     text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.2s ease-in-out;
+    font-size: 1.8rem; /* Aumenta o tamanho dos ícones */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave e para o transform */
 }
 
 .footer-social a:hover {
-    color: #e4e6e5;
+    color: var(--color-primary); /* Cor no hover */
+    transform: translateY(-3px); /* Efeito de "subir" um pouco no hover */
 }
 
 footer p {
-    color: #e4e6e5; /* Corrigido: Removido o 'var()' desnecessário */
-    font-size: 0.9rem;
-    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.6); /* Texto de copyright mais suave */
+    font-size: 0.85rem; /* Fonte ligeiramente menor para copyright */
+    margin-top: 2rem; /* Margem ajustada */
+    font-family: var(--font-primary); /* Garante a mesma fonte */
+    font-weight: 300; /* Mais leve */
+}
+
+
+/* --- Media Queries para Responsividade do Footer --- */
+
+/* Para tablets e telas menores (até 768px) */
+@media (max-width: 768px) {
+    footer {
+        padding: 2.5rem 1.5rem 1.5rem; /* Padding reduzido */
+        margin-top: 4rem;
+    }
+
+    .footer-instagram a {
+        font-size: 1.1rem;
+    }
+
+    .instagram-photos {
+        gap: 0.6rem;
+    }
+
+    .instagram-photos img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer-menu ul {
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .footer-menu a {
+        font-size: 1rem;
+    }
+
+    .footer-social a {
+        font-size: 1.6rem;
+        margin: 0 0.7rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Para telas de celular (até 576px) */
+@media (max-width: 576px) {
+    footer {
+        padding: 2rem 1rem 1rem; /* Padding ainda mais reduzido */
+        margin-top: 3rem;
+    }
+
+    .footer-instagram {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-instagram a {
+        font-size: 1rem;
+    }
+
+    .instagram-photos {
+        flex-wrap: wrap; /* Permite que as fotos quebrem a linha */
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .instagram-photos img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-menu ul {
+        flex-direction: column; /* Menu do footer em coluna */
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .footer-menu a {
+        font-size: 1.1rem; /* Aumenta um pouco a fonte para facilitar o toque */
+        padding: 0.5rem 0; /* Adiciona padding para área de clique */
+    }
+
+    .footer-social {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-social a {
+        font-size: 1.4rem;
+        margin: 0 0.5rem;
+    }
+
+    footer p {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
 }

@@ -1160,7 +1160,7 @@ footer p {
   transform: scale(1.05); /* Pequeno zoom na imagem no hover */
 }
 
-/* NOVO: Camada de conteúdo que sobrepõe a imagem */
+/* MODIFICADO: Camada de conteúdo que sobrepõe a imagem */
 .card-content-overlay {
   position: absolute;
   top: 0;
@@ -1176,6 +1176,7 @@ footer p {
   z-index: 2;
   text-align: center;
   color: white;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(255, 255, 255, 0.8) 85%, rgb(255, 255, 255) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1195,6 +1196,7 @@ footer p {
   padding: 0.3rem 0.8rem;
   border-radius: 3px;
   white-space: nowrap;
+  color: white;
 }
 
 /* Estilos para o Título Principal (Ex: CASAMENTO - JANA + MATT) */
@@ -1209,23 +1211,25 @@ footer p {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Estilos para o botão "VER FOTOS" */
+/* MODIFICADO: Estilos para o botão "VER FOTOS" */
 .card-view-photos {
   font-family: var(--font-primary);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: var(--color-primary);
-  color: white;
+  background-color: transparent;
+  color: black;
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
   display: inline-block;
   margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .portfolio-card:hover .card-view-photos {
-  background-color: rgb(0, 98.4, 204);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 /* --- Media Queries para responsividade dos cards --- */

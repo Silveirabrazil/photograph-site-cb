@@ -77,7 +77,7 @@
     transform: scale(1.05); /* Pequeno zoom na imagem no hover */
 }
 
-/* NOVO: Camada de conteúdo que sobrepõe a imagem */
+/* MODIFICADO: Camada de conteúdo que sobrepõe a imagem */
 .card-content-overlay {
     position: absolute;
     top: 0;
@@ -92,7 +92,18 @@
     box-sizing: border-box;
     z-index: 2; // Acima do overlay de hover
     text-align: center;
-    color: white; // Cor padrão para todo o texto no overlay
+    color: white; // Cor padrão para todo o texto no overlay (será sobrescrita para "VER FOTOS")
+
+    // NOVO: Gradiente transparente para escuro no topo, e branco na base.
+    // Ajuste a altura do gradiente conforme necessário.
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5) 0%,      // Começa 50% preto no topo
+        rgba(0, 0, 0, 0) 30%,       // Transiciona para transparente em 30% da altura
+        rgba(0, 0, 0, 0) 70%,       // Fica transparente até 70%
+        rgba(255, 255, 255, 0.8) 85%, // Começa a transicionar para branco perto do fim
+        rgba(255, 255, 255, 1) 100% // Fica totalmente branco na base
+    );
     opacity: 0; // Inicia invisível
     transition: opacity 0.3s ease; // Transição suave para aparecer no hover
 }
@@ -103,50 +114,52 @@
 
 /* Estilos para a Localização (Ex: RIO DE JANEIRO) */
 .card-location {
-    font-family: var(--font-primary); // Ou a fonte que você preferir para localização
+    font-family: var(--font-primary);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: 0.5rem; // Espaçamento do topo
+    margin-top: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5); // Fundo semi-transparente para a localização
     padding: 0.3rem 0.8rem;
     border-radius: 3px;
-    white-space: nowrap; // Evita quebra de linha
+    white-space: nowrap;
+    color: white; // Garante que a localização seja branca
 }
 
 
 /* Estilos para o Título Principal (Ex: CASAMENTO - JANA + MATT) */
 .card-title {
-    font-family: var(--font-primary); // Use a fonte que desejar para o título principal (usando Dosis)
+    font-family: var(--font-primary); // Usando Dosis para o título principal
     font-size: 1.5rem;
-    color: white;
-    margin: auto 0; // Centraliza verticalmente entre a localização e o botão
+    color: white; // Título em branco
+    margin: auto 0;
     text-align: center;
     line-height: 1.2;
-    padding: 0 0.5rem; // Pequeno padding horizontal
+    padding: 0 0.5rem;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); // Sombra de texto para melhor legibilidade
 }
 
-/* Estilos para o botão "VER FOTOS" */
+/* MODIFICADO: Estilos para o botão "VER FOTOS" */
 .card-view-photos {
-    font-family: var(--font-primary); // Usa a fonte Dosis
+    font-family: var(--font-primary);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background-color: var(--color-primary); // Cor do seu tema
-    color: white;
+    background-color: transparent; // Remove o fundo do botão para que o gradiente apareça
+    color: black; // **Cor do texto em preto para se destacar no fundo branco**
     padding: 0.6rem 1.2rem;
-    border-radius: 50px; // Cantos arredondados para parecer um botão
-    display: inline-block; // Para que o padding e border-radius funcionem bem
+    border-radius: 50px;
+    display: inline-block;
     margin-bottom: 0.5rem; // Espaçamento da parte inferior
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; // Transição também para a cor do texto
+    border: 1px solid rgba(0,0,0,0.3); // Adiciona uma borda leve para definir o "botão"
 }
 
 .portfolio-card:hover .card-view-photos {
-    // Para que isso funcione, a variável SCSS `$color-primary-scss` precisa ser acessível.
-    // Isso geralmente é feito através de um `@import` do seu arquivo de variáveis (se tiver um)
-    // ou se este arquivo for compilado depois de um arquivo global que define a variável.
-    background-color: darken($color-primary-scss, 10%);
+    // Não precisa de darken() aqui, já que o fundo é transparente e a cor do texto é o foco
+    // Se quiser um efeito no texto, pode ser:
+    color: var(--color-primary); // Mudar a cor do texto para a cor primária no hover, por exemplo
+    border-color: var(--color-primary); // Mudar a cor da borda no hover
 }
 
 
@@ -158,7 +171,7 @@
     }
 
     .portfolio-category {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Ajuste para telas menores
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
     }
 
@@ -178,7 +191,7 @@
 
 @media (max-width: 480px) {
     .portfolio-category {
-        grid-template-columns: 1fr; // Uma coluna em telas muito pequenas
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 

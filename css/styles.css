@@ -1831,7 +1831,7 @@ footer p {
 .modal-gallery-wedding {
   display: none; /* ESCONDE O MODAL POR PADRÃO. SOMENTE ESTA LINHA DEVE ESTAR AQUI PARA O DISPLAY INICIAL. */
   position: fixed; /* Fixa na tela */
-  z-index: 1000; /* Acima de todo o resto */
+  z-index: 2000; /* Acima de todo o resto */
   left: 0;
   top: 0;
   width: 100%;

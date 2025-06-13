@@ -14,7 +14,7 @@
 
 .feature-item {
     background-color: var(--color-white, #fff); // Fundo branco para cada item
-    border-radius: 3px; // Cantos arredondados
+    border-radius: 3%; // Cantos arredondados
     overflow: hidden; // Garante que o conteúdo não vaze dos cantos
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Sombra sutil para profundidade
     text-decoration: none; // Remove sublinhado se o item for um link

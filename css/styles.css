@@ -1854,11 +1854,12 @@ footer p {
 .modal-content-wedding {
   position: relative;
   margin: auto;
-  max-width: 90%; /* Limita a largura da imagem no modal */
-  max-height: 85vh; /* Limita a altura da imagem no modal (deixa espaço para caption) */
+  width: 80vw;
+  max-height: 50vw;
+  height: auto;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Sombra para o modal */
-  border-radius: 8px; /* Cantos arredondados */
-  background-color: var(--color-black); /* Fundo preto para a imagem */
+  border-radius: 3px; /* Cantos arredondados */
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;

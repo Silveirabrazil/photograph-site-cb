@@ -1,6 +1,6 @@
 /* --- 5. Seção de Apresentação --- */
 .apresentation {
-    width: 90%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
+    width: 100%; /* Ajustado para ocupar 90% da largura do elemento pai em desktop, conforme seu CSS original. */
     max-width: 100%; /* Limita a largura máxima da seção em telas grandes */
     margin: 2rem auto; /* Centraliza a seção horizontalmente e adiciona margens verticais */
     padding: 2rem; /* Adiciona preenchimento interno para o conteúdo */
@@ -63,7 +63,7 @@
     }
 
     .apresentation img {
-        width: 80%; /* A imagem ocupa 80% da largura do contêiner .apresentation */
+        width: 70%; /* A imagem ocupa 80% da largura do contêiner .apresentation */
         max-width: 250px; /* Limita o tamanho máximo da imagem em telas menores */
         height: auto; /* Garante que a proporção da imagem é mantida */
         margin-bottom: 1.5rem; /* Adiciona margem abaixo da foto quando em coluna */

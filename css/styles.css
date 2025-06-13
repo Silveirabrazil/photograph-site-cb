@@ -114,7 +114,7 @@ header {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
   /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
   /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
-  height: 9vw; /* Exemplo: Ajuste esta altura para o seu header */
+  height: 12vw; /* Exemplo: Ajuste esta altura para o seu header */
   min-height: 80px; /* Garante uma altura mínima para o header */
   box-shadow: var(--shadow-light); /* Sombra no header */
   transition: background 0.5s ease;
@@ -149,14 +149,14 @@ header {
 
 .menu a {
   text-decoration: none;
-  color: var(--color-light-grey, #e4e6e5); /* Use a variável CSS ou um fallback */
+  color: #cf9945; /* Use a variável CSS ou um fallback */
   font-weight: 500;
   font-size: 1.2rem; /* Ajustado para melhor legibilidade */
   transition: color 0.3s ease; /* Transição mais suave para a cor */
 }
 
 .menu a:hover {
-  color: var(--color-primary, #cf9945); /* Use a variável CSS ou um fallback para a cor de hover */
+  color: var(--color-primary, rgb(207, 153, 69)); /* Use a variável CSS ou um fallback para a cor de hover */
   font-weight: 800;
   transition: font-weight 0.5s ease-in-out;
 }
@@ -168,14 +168,14 @@ header {
   justify-content: center; /* Centraliza horizontalmente */
   width: auto; /* Deixa a largura automática */
   padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
-  border-radius: 5px;
+  border-radius: 3%;
   text-align: center;
   font-weight: 600; /* Pode ser definido aqui ou no `a` */
 }
 
 /* Efeitos de hover para os itens do menu (os LIs) */
 .menu li:hover {
-  background-color: rgba(64, 64, 66, 0.2); /* Use RGBA para um efeito transparente */
+  background-color: rgba(207, 153, 69, 0.5); /* Use RGBA para um efeito transparente */
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -385,7 +385,7 @@ footer p {
 
 .feature-item {
   background-color: var(--color-white, #fff);
-  border-radius: 8px;
+  border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-decoration: none;
@@ -539,7 +539,7 @@ footer p {
 
 .post {
   background: var(--color-white);
-  border-radius: 10px;
+  border-radius: 3%;
   box-shadow: var(--shadow-light);
   overflow: hidden;
   width: 300px;
@@ -773,7 +773,6 @@ footer p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
   padding: 1rem;
   display: flex;
   flex-direction: column;

@@ -17,7 +17,7 @@ header {
     /* `background-color` explícito não é necessário se o `linear-gradient` cobre todo o espaço e tem opacidade no início */
 
     /* Altura do header para o degradê ter espaço. Ajuste conforme necessário. */
-    height: 9vw; /* Exemplo: Ajuste esta altura para o seu header */
+    height: 12vw; /* Exemplo: Ajuste esta altura para o seu header */
     min-height: 80px; /* Garante uma altura mínima para o header */
 
     box-shadow: var(--shadow-light); /* Sombra no header */
@@ -53,16 +53,17 @@ header {
 
 .menu a {
     text-decoration: none;
-    color: var(--color-light-grey, #e4e6e5); /* Use a variável CSS ou um fallback */
+    color:  #cf9945; /* Use a variável CSS ou um fallback */
     font-weight: 500;
     font-size: 1.2rem; /* Ajustado para melhor legibilidade */
     transition: color 0.3s ease; /* Transição mais suave para a cor */
 }
 
 .menu a:hover {
-    color: var(--color-primary, #cf9945); /* Use a variável CSS ou um fallback para a cor de hover */
+    color: var(--color-primary, rgb(207, 153, 69)); /* Use a variável CSS ou um fallback para a cor de hover */
     font-weight: 800;
     transition: font-weight 0.5s ease-in-out;
+    
 }
 
 /* Estilos para os itens específicos do menu */
@@ -72,14 +73,14 @@ header {
     justify-content: center; /* Centraliza horizontalmente */
     width: auto; /* Deixa a largura automática */
     padding: 0.5rem 1rem; /* Padding interno para as "caixas" dos links */
-    border-radius: 5px;
+    border-radius: 3%;
     text-align: center;
     font-weight: 600; /* Pode ser definido aqui ou no `a` */
 }
 
 /* Efeitos de hover para os itens do menu (os LIs) */
 .menu li:hover {
-    background-color: rgba(64, 64, 66, 0.2); /* Use RGBA para um efeito transparente */
+    background-color:rgb(207, 153, 69, 0.5); /* Use RGBA para um efeito transparente */
     transition: background-color 0.3s ease-in-out;
 }
 

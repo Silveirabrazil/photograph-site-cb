@@ -64,6 +64,7 @@
         margin: auto; /* Ajusta margem para mobile */
         gap: 1.5rem; /* Ajusta espaçamento entre imagem e texto */
         padding-bottom: 2rem;
+        padding-top:2rem ;
     }
 
     .apresentation img {
@@ -102,5 +103,7 @@
     .apresentation p {
         font-size: 1.5rem; /* Fixa o tamanho máximo para p em telas muito grandes */
         padding-bottom: 2rem;
+        padding-top:2rem ;
+
     }
 }
